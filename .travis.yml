@@ -5,9 +5,11 @@ node_js:
 services:
   - mongodb
 
+before_install:
+  - cd backend
+
 before_script:
   - sleep 15
 
 script:
-  - cd backend/
   - yarn test  
