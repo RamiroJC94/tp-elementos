@@ -9,14 +9,22 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/user', (req,res)=>{
+app.get('/user', async (req,res)=>{
     console.log(req.body.username);
-    res.send("ok a")
+    monguito.openConnection();
+    const userfinded= await service.findUserByUsername(req.body.username);
+    monguito.closeConnection();
+    res.json(JSON.stringify(userfinded));
 }       
 );
   
-app.post('/user',  (req, res) => {
+app.post('/user',async  (req, res) => {
     console.log(req.body);
+
+    monguito.openConnection();
+    await service.createUser(req.body.name,req.body.mail,req.body.username);
+    monguito.closeConnection();
+
     res.send("user guardado");
 });
 
