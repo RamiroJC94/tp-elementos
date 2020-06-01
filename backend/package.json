@@ -5,13 +5,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node index.js",
+    "start": "babel-node express.js",
     "test": "mocha --opts ./test/mocha.opts --require @babel/register"
   },
   "dependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.2.0",
-    "mongoose": "^5.6.0"
+    "mongoose": "^5.6.0",
+    "express": "^4.17.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
