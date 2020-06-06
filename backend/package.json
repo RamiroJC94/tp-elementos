@@ -7,7 +7,7 @@
   "scripts": {
     "start": "babel-node express.js",
     
-    "test": "./node_modules/.bin/mocha --reporter spec --require @babel/register"
+    "test": "./node_modules/.bin/mocha --reporter spec --exit --require @babel/register"
   },
   "dependencies": {
     "chai": "^4.2.0",
