@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "babel-node express.js",
-    "test": "mocha --opts ./test/mocha.opts --require @babel/register"
+    
+    "test": "./node_modules/.bin/mocha --reporter spec --require @babel/register"
   },
   "dependencies": {
     "chai": "^4.2.0",

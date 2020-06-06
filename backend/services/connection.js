@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const URI='mongodb://localhost/peliculas';
+const URI='mongodb://localhost/moviemoon';
 
 export default class MongooseConnection{
      
