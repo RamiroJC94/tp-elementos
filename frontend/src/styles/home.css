@@ -1,0 +1,11 @@
+.elementos {
+    display: grid;
+    grid-template-columns: auto auto auto; /*indico la cantidad de columnas que quiero y el tamanio de cada una*/ 
+    grid-gap: 10px;
+    margin: 10px;
+}
+
+strong {
+  font-family:Comic, cursive, sans-serif;
+  padding: 10px;
+}

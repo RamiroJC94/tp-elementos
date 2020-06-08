@@ -1,25 +1,28 @@
 import React from 'react';
 import {withRouter}from 'react-router-dom';
 import api from '../api/api';
-
+import  '../styles/home.css'
+import Movie from './movie.js'
+import Navbar from 'react-bootstrap/Navbar'
+import pikachu from '../imagen/pikachu.jpg'
 class Home extends React.Component{
     constructor(props){
       super(props);
       this.state={url:""}
     }
 
-   componentDidMount(){
-       api.getCats()
-       .then((data)=> this.setState({url:data[0].url}))
-       .catch((error)=> console.log(error))
-   } 
+       
+ 
    render(){
+       let elems=[1,2,3,4,5,6,7,8,9,10];
+       let pelis= elems.map((elem)=><Movie key={elem.toString()}></Movie>);
        return (
-          <div>
-           <h1>HOlA soy la Home</h1>
-           <h3>Soy un gato</h3>
-          <img src={this.state.url} alt={true}></img>
-           </div>
+         <div>
+
+          <div className="elementos">
+                {pelis}
+         </div>
+         </div>
        );
    }
 }
