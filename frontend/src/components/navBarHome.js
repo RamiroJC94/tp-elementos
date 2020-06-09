@@ -7,7 +7,9 @@ import {Link} from 'react-router-dom'
 export default  class NavBarHome extends React.Component
 {
 render(){
-    return (<Navbar bg="dark" variant="dark">
+    return (
+      
+       <Navbar  variant="dark" style={{backgroundColor: "#151515"}}>
     <Navbar.Brand >
     <img
         alt=""
@@ -21,6 +23,11 @@ render(){
     <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>
     </Navbar.Collapse>
   </Navbar> 
+  
+
 )
 }
 }
+
+
+

@@ -1,12 +1,14 @@
 import React from 'react';
 import api from '../api/api';
 import  '../styles/movie.css'
+import {Link} from 'react-router-dom'
 
 export default class Movie extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            url:"https://www.tonica.la/__export/1587957633788/sites/debate/img/2020/04/26/avengers-endgame-momentos-epicos-no-podemos-dejar-ver_1.jpg_423682103.jpg"
+            url:"https://1.bp.blogspot.com/-p7Wzjw1BXNk/WtT3NVU1oOI/AAAAAAAAHFI/qjAi1mDHk-Ur0xTWa803uMJzz2uX5Gf4QCLcBGAs/s1600/Avengers.%2BInfinity%2BWar%2B%255B2018%255D.jpg",
+            id:props.num
         }
     }
 /*  componentDidMount(){
@@ -16,6 +18,7 @@ export default class Movie extends React.Component{
   }
 */
     render(){
-        return (<img className="movie"  src={this.state.url}></img>);
+        const dir="/player/"+this.state.id.toString()
+        return (<Link to={dir}><img className="movie"  src={this.state.url}></img></Link>);
     }
 }
