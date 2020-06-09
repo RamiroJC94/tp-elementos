@@ -31,11 +31,12 @@ margin-right: auto;
 display: block;
 
 }
+/*
 div .botonLogin{
   
-     /*justify-content: unset;*/ 
+
     position: relative !important;
     left: 100px;
-    width: 100px;
-  
-}
+    width: 100px;*/
+     /*justify-content: unset;*/   
+
