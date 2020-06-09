@@ -3,20 +3,26 @@ import {withRouter}from 'react-router-dom';
 import  '../styles/login.css'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import ErrorLogin from './errorLogin'
  class Login extends React.Component{
      constructor(props){
-         super(props)
+         super(props);
+         this.state={
+             checkLogin:null
+         }
      }
 
-    logear= () => {
-        this.props.history.push(`/`);
-    }
+     errorLog = (messageError) => <ErrorLogin error={messageError}/>
+    logear= () => 
+        true ? this.props.history.push(`/`):this.setState({checkLogin:this.errorLog("email o password incorrectos")});
+    
     render(){
         return(
          <div >
              <h1 className="titul">MovieMoon</h1>
         <div className="formulario">
         <Form >
+        {this.state.checkLogin} 
              <Form.Group >
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" placeholder="Ingresar Correo" 
