@@ -14,15 +14,15 @@ class Player extends React.Component {
           <NavBarPlayer></NavBarPlayer>
           <div style={{backgroundColor: "#151515"}}>
             <div className="movie">
-                <h1>Shingeki No Kyoyin</h1>
+                <h1>Avengers Infinity War</h1>
             </div>
             <div className="centrarMovie">
             <div className="player-wrapper">
               <ReactPlayer
-                 url='https://www.youtube.com/watch?v=U0OP_0twwA4'
+                 url='https://www.youtube.com/watch?v=3xk11d9hjp0'
                 className='react-player'
-                 width='50%'
-                height='50%'
+                 width='60%'
+                height='75%'
                  controls={true}
                   playing={false}
                />
