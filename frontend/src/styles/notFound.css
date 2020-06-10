@@ -1,0 +1,13 @@
+.notFound{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+  }
+  #irInicio{
+    font-size: 400%;
+  }
+
+.not{
+  color: blue;
+}
