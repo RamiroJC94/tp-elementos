@@ -12,16 +12,26 @@ beforeEach(()=>{
 afterEach(()=>{
     monguito.closeConnection();
 })
-//mocha --opts ./test/mocha.opts --compilers js:@babel/register
 
-describe("pruebo service user", () =>{
-     it("inserto un usuario nuevo",async ()=>{
-          const message= await service.createUser("pepe","pepe@gmailcom","bernadro15");    
-          expect(message).to.equal("save user succesfully");
-        })
-     it("busco a pepe",()=>{
-         //
-         expect("hola").to.equal("hola");
-     });  
+describe("test service user", () =>{
+     it("inserto a pepe y y lo recupero",async ()=>{
+          await service.createUser("pepe@gmail.com","bernadro15");
+          const user = await service.findUserByUsername("pepe@gmail.com");    
+          expect(user.username).to.equal("pepe@gmail.com");
+     })
+     it("pepe se logea y tiene exito",async ()=>{
+      await service.createUser("pepe@gmail.com","bernadro15");
+      const pepe=await service.login("pepe@gmail.com","bernadro15");
+         expect("pepe@gmail.com").to.equal(pepe.username);
+     }) 
+     it("juan se logea y fracasa",async()=>{
+          
+         try {
+            await service.login("juan@gmail.com","papapap");
+          } catch (error) {
+             expect("password o username incorrectos").to.equal(error);    
+          } 
+
+     }) 
 })
-    /*"test": "mocha --opts ./test/mocha.opts --require @babel/register"*/
+ 
