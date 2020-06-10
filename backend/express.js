@@ -64,6 +64,6 @@ router.route('/movies')
     })
     
 
-app.listen(3000,  ()=> {
-    console.log('Example app listening on port 3000!');
+app.listen(7000,  ()=> {
+    console.log('Example app listening on port 7000!');
   });
