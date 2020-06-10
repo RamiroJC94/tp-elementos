@@ -6,8 +6,10 @@ var monguito=new MongooseConnection();
 var service = new ServiceUser();
 
 var app = express();
+let router = express.Router();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/',router)
 
 app.get('/user', async (req,res)=>{
     console.log(req.body.username);
@@ -28,6 +30,20 @@ app.post('/user',async  (req, res) => {
     res.send("user guardado");
 });
 
+
+router.route('/movies')
+    .get(function(req,res){
+        res.json('all movies');
+    })
+    .post(function(req,res){
+        res.json('post.')
+    })
+    .put(function(req,res){
+        res.json('put.')
+    })
+    .delete(function(req,res){
+        res.json('delete')
+    })
 
 app.listen(3000,  ()=> {
     console.log('Example app listening on port 3000!');
