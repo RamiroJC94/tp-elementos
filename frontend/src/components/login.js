@@ -14,7 +14,7 @@ import ErrorLogin from './errorLogin'
 
      errorLog = (messageError) => <ErrorLogin error={messageError}/>
     logear= () => 
-        true ? this.props.history.push(`/`):this.setState({checkLogin:this.errorLog("email o password incorrectos")});
+        true ? this.props.history.push(`/notFound`):this.setState({checkLogin:this.errorLog("email o password incorrectos")});
     
     render(){
         return(

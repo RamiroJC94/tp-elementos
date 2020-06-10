@@ -4,6 +4,7 @@ import { BrowserRouter,Link} from 'react-router-dom';
 import Home from './components/home';
 import Player from './components/player';
 import Login from './components/login'
+import  NotFoundPage from'./components/notFound'
 export default class App extends React.Component{
   constructor(props){
     super(props)
@@ -17,6 +18,7 @@ render(){
         <Route exact path="/" render={Home} ></Route>
         <Route exact path="/player/:idMovie" render={Player}></Route>
         <Route exact path="/login" render={Login}></Route>
+        <Route exact path="/notFound" render={NotFoundPage}></Route>
       </Switch>
        </BrowserRouter>
        );
