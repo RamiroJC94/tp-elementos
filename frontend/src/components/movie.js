@@ -7,8 +7,9 @@ export default class Movie extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            url:"https://1.bp.blogspot.com/-p7Wzjw1BXNk/WtT3NVU1oOI/AAAAAAAAHFI/qjAi1mDHk-Ur0xTWa803uMJzz2uX5Gf4QCLcBGAs/s1600/Avengers.%2BInfinity%2BWar%2B%255B2018%255D.jpg",
-            id:props.num
+            titulo:props.titulo,
+            imagen:props.imagen,
+            trailer:props.trailer  
         }
     }
 /*  componentDidMount(){
@@ -18,7 +19,7 @@ export default class Movie extends React.Component{
   }
 */
     render(){
-        const dir="/player/"+this.state.id.toString()
-        return (<Link to={dir}><img className="movie"  src={this.state.url}></img></Link>);
+        const dir="/player/"+this.state.titulo
+        return (<Link to={dir}><img className="movie"  src={this.state.imagen}></img></Link>);
     }
 }

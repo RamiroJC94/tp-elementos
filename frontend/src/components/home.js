@@ -4,16 +4,25 @@ import api from '../api/api';
 import  '../styles/home.css'
 import Movie from './movie.js'
 import NavBarHome from './navBarHome'
+import axios from 'axios'
 class Home extends React.Component{
     constructor(props){
       super(props);
-      this.state={url:""
+      this.state={movies:[]
       }
     }
-   
+
+  componentDidMount(){ 
+  api.getMovies()
+    .then(data => {this.setState({movies:data})
+    //console.log("info de la data")
+    //console.log(data)
+   })
+    .catch(error => console.log(error))
+  }
    render(){
-       let elems=[1,2,3,4,5,6,7,8,9,10];
-       let pelis= elems.map((elem)=><Movie key={elem.toString()} num={elem}></Movie>);
+       let data=this.state.movies;
+       let pelis= data.map((elem)=><Movie key={elem.titulo} titulo={elem.titulo} imagen={elem.imagen} trailer={elem.trailer}></Movie>);
        return (
          <div className="back">
            <NavBarHome></NavBarHome>

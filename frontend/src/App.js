@@ -16,7 +16,7 @@ render(){
      <BrowserRouter>
       <Switch>
         <Route exact path="/" render={Home} ></Route>
-        <Route exact path="/player/:idMovie" render={Player}></Route>
+        <Route exact path="/player/:video" render={props=><Player {...props}/>}></Route>
         <Route exact path="/login" render={Login}></Route>
         <Route exact path="/notFound" render={NotFoundPage}></Route>
       </Switch>

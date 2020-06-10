@@ -2,13 +2,14 @@ import express from 'express';
 import MongooseConnection from './services/connection.js';
 import ServiceUser from './services/service_user.js'
 import ServiceMovie from './services/service_movie.js'
-
+import cors from 'cors';
 var monguito=new MongooseConnection();
 var service = new ServiceUser();
 let serviceMovie = new ServiceMovie();
 
 var app = express();
 let router = express.Router();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/',router);
@@ -64,6 +65,6 @@ router.route('/movies')
     })
     
 
-app.listen(3000,  ()=> {
-    console.log('Example app listening on port 3000!');
+app.listen(7000,  ()=> {
+    console.log('Example app listening on port 7000!');
   });
