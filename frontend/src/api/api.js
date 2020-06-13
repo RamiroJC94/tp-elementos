@@ -10,14 +10,10 @@ const request = (type, path, body) =>
   axios
     .request({ url: path, method: type, data: body })
     .then(response => response.data)
-    .catch(error => {console.log(error.toJSON())
-    Promise.reject(error)});
+    .catch(error => Promise.reject(error.response.data));
 
 const api ={
-    getMovies:()=> request('get', '/movies'),
-//   getMovies:()=>axios.get('http://localhost:7000/movies')
-//   .then(response=>response.data)
-//   .catch(error=>console.log(error)),  
+    getMovies:()=> request('get', '/movies'), 
    login:(body) => request('post',`/users/login`,body)
 }
 

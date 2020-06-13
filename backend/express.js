@@ -29,9 +29,11 @@ app.post('/users/login',async (req,res)=>{
     try{
         let user = await service.login(req.body.username,req.body.password);
         res.send(user);
+        monguito.closeConnection();
     } catch(error){
-        console.log(error.message);
-        res.send("404 Not Found");    
+        console.log(error);
+        monguito.closeConnection();   
+        res.status(404).send("404 Not Found"); 
     } 
 
 });

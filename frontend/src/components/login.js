@@ -4,18 +4,32 @@ import  '../styles/login.css'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ErrorLogin from './errorLogin'
+import api from '../api/api';
  class Login extends React.Component{
      constructor(props){
          super(props);
          this.state={
-             checkLogin:null
+             checkLogin:null,
+             email:"",
+             password:""
          }
      }
-
+     
      errorLog = (messageError) => <ErrorLogin error={messageError}/>
-    logear= () => 
-        true ? this.props.history.push(`/notFound`):this.setState({checkLogin:this.errorLog("email o password incorrectos")});
     
+    logear=()=>{
+        let body = {username: this.state.email, password: this.state.password}
+        api.login(body)
+        .then(data=>{this.props.history.push("/notFound")})
+        .catch(error=>this.setState({checkLogin:this.errorLog("email o password incorrectos")}))
+    } 
+    handleEmail = (event) =>{
+        this.setState({email:event.target.value.trim()})
+    }  
+    handlePassword = (event) =>{
+        this.setState({password:event.target.value.trim()})
+    }
+
     render(){
         return(
          <div >
@@ -26,11 +40,12 @@ import ErrorLogin from './errorLogin'
              <Form.Group >
                 <Form.Label>Email</Form.Label>
                 <Form.Control type="email" placeholder="Ingresar Correo" 
-                              />
+                 value={this.state.email} onChange={this.handleEmail}  />
             </Form.Group>
             <Form.Group >
                 <Form.Label>Password</Form.Label>
-                <Form.Control  type="password" placeholder="Password" />
+                <Form.Control  type="password" placeholder="Password"
+                value={this.state.password} onChange={this.handlePassword} />
             </Form.Group>
             <div style={{textAlign:"center"}}>
             <Button  variant="primary" onClick={this.logear}>
