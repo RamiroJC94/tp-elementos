@@ -7,15 +7,20 @@ import  NavBarPlayer from './navBarPlayer.js'
 class Player extends React.Component {
    constructor(props){
      super(props);
-
+     this.state={
+       peli:null,
+       get:props.getMovie
+     }
    
    }
-
+    componentDidMount(){
+      console.log(this.state.get())
+    }
      
     render () {
       
-      return (
-        <div>
+    return (<div><NavBarPlayer></NavBarPlayer><div>{this.state.peli}</div></div>
+  /*      <div>
           <NavBarPlayer></NavBarPlayer>
           <div style={{backgroundColor: "#151515"}}>
             <div className="movie">
@@ -35,7 +40,7 @@ class Player extends React.Component {
             </div>
           </div>
           </div>
-      )
+  */    )
     }
   }
 

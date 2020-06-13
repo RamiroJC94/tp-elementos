@@ -8,21 +8,21 @@ import axios from 'axios'
 class Home extends React.Component{
     constructor(props){
       super(props);
-      this.state={movies:[]
+      this.state={movies:[],
+        set:props.setMovie
       }
     }
 
   componentDidMount(){ 
   api.getMovies()
     .then(data => {this.setState({movies:data})
-    //console.log("info de la data")
-    //console.log(data)
+      console.log(data)
    })
     .catch(error => console.log(error))
   }
    render(){
        let data=this.state.movies;
-       let pelis= data.map((elem)=><Movie key={elem.titulo} titulo={elem.titulo} imagen={elem.imagen} trailer={elem.trailer}></Movie>);
+       let pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set}/>);
        return (
          <div className="back">
            <NavBarHome></NavBarHome>

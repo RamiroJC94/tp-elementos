@@ -7,9 +7,8 @@ export default class Movie extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            titulo:props.titulo,
-            imagen:props.imagen,
-            trailer:props.trailer  
+           peli:props.movie ,
+           setM:props.setPeli
         }
     }
 /*  componentDidMount(){
@@ -19,7 +18,7 @@ export default class Movie extends React.Component{
   }
 */
     render(){
-        const dir="/player/"+this.state.titulo
-        return (<Link to={dir}><img className="movie"  src={this.state.imagen}></img></Link>);
+        const dir="/player/"+this.state.peli.titulo
+        return (<Link to={dir} onClick={()=> this.state.setM(this.state.peli)}><img className="movie"  src={this.state.peli.imagen}></img></Link>);
     }
 }
