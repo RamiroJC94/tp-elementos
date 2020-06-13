@@ -14,10 +14,7 @@ const request = (type, path, body) =>
     Promise.reject(error)});
 
 const api ={
-    getMovies:()=> request('get', '/movies'),
-//   getMovies:()=>axios.get('http://localhost:7000/movies')
-//   .then(response=>response.data)
-//   .catch(error=>console.log(error)),  
+    getMovies:()=> request('get', '/movies'), 
    login:(body) => request('post',`/users/login`,body)
 }
 

@@ -23,7 +23,7 @@ class Player extends React.Component {
     <NavBarPlayer></NavBarPlayer>
     <div style={{backgroundColor: "#151515"}}>
       <div className="movie">
-          <h1>Video</h1>
+          <h1>{this.state.peli.titulo}</h1>
       </div>
       <div className="centrarMovie">
       <div className="player-wrapper">

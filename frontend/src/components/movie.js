@@ -11,12 +11,7 @@ export default class Movie extends React.Component{
            setM:props.setPeli
         }
     }
-/*  componentDidMount(){
-    api.getCats()
-    .then((data)=> this.setState({url:data[0].url}))
-    .catch((error)=> console.log(error))
-  }
-*/
+
     render(){
         const dir="/player/"+this.state.peli.titulo
         return (<Link to={dir} onClick={()=> this.state.setM(this.state.peli)}><img className="movie"  src={this.state.peli.imagen}></img></Link>);
