@@ -1,8 +1,12 @@
 import MongooseConnection from './services/connection.js';
 import ServiceMovie from './services/service_movie.js'
+import ServiceUser from './services/service_user.js'
+
 import { before, after } from 'mocha';
 var monguito = new MongooseConnection();
 var service = new ServiceMovie();
+var serviceUser = new ServiceUser();
+
 
 //para ejecutar el setup es yarn run setUp
 before(()=>{
@@ -13,13 +17,7 @@ after(()=>{
 })
 
 describe("setUp",()=>{
-    it("load movies",async ()=>{
-    //    await service.createMovie("The Avengers","https://66.media.tumblr.com/7e27e91435d57790d9d70944c64baad2/tumblr_inline_nnmj1e7oXR1qa2gkq_500.jpg","https://www.youtube.com/watch?v=eOrNdBpGMv8");
-   //     await service.createMovie("Avengers: Age of Ultron","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/5/54/Avengers_Age_Of_Ultron_Poster.png/revision/latest/scale-to-width-down/1000?cb=20191029195118&path-prefix=es","https://www.youtube.com/watch?v=uLmntu8OH-I");
-  //      await service.createMovie("Avengers: Infinity War","https://pics.filmaffinity.com/avengers_infinity_war-181539353-large.jpg","https://www.youtube.com/watch?v=3xk11d9hjp0");
-  //      await service.createMovie("Avengers: Endgame","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1000?cb=20190326185910&path-prefix=es","https://www.youtube.com/watch?v=znk2OICHbjY");
- //       await service.createMovie("Mi vecino Totoro","https://pics.filmaffinity.com/tonari_no_totoro-974352061-large.jpg","https://www.youtube.com/watch?v=BjeBG8Xrci8");
-//        await service.createMovie("avengers6","imagen url","trailer url");
+    it("load movies y un user",async ()=>{
 await service.createMovie("The Avengers","https://66.media.tumblr.com/7e27e91435d57790d9d70944c64baad2/tumblr_inline_nnmj1e7oXR1qa2gkq_500.jpg","https://www.youtube.com/watch?v=eOrNdBpGMv8");
               
 await service.createMovie("Avengers: Age of Ultron","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/5/54/Avengers_Age_Of_Ultron_Poster.png/revision/latest/scale-to-width-down/1000?cb=20191029195118&path-prefix=es","https://www.youtube.com/watch?v=tmeOjFno6Do");
@@ -49,6 +47,8 @@ await service.createMovie("Haru en el reino de los gatos","https://cdn.hobbycons
 await service.createMovie("El castillo ambulante","http://es.web.img3.acsta.net/c_215_290/medias/nmedia/18/80/29/24/20062836.jpg","https://www.youtube.com/watch?v=QLNAmXIyEjc");
         
 await service.createMovie("La colina de las amapolas","https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/cover_290x414/public/media/image/2020/04/colina-amapolas-1910129.jpg?itok=MOcBZhrh","https://www.youtube.com/watch?v=9-rhgSCAqDU");
-    })
+
+await serviceUser.createUser("pepe@gmail.com","bernadro15");
+})
     })
 
