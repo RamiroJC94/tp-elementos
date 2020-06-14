@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 export default class NavBarPlayer extends React.Component{
 
     render(){
-      return (<Navbar  variant="dark" style={{backgroundColor: "#151515"}}>
+      return (<Navbar  variant="dark" >
       <Navbar.Brand >
       <img
           alt=""

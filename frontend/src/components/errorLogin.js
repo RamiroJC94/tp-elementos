@@ -1,5 +1,4 @@
 import React from 'react'
-import Alert from 'react-bootstrap/Alert'
 export default class ErrorLogin extends React.Component{
     constructor(props){
         super(props)
