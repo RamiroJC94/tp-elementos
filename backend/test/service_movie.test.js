@@ -34,4 +34,12 @@ describe("test service movie", () =>{
         expect(3).to.equal(pelis.length);
      //   console.log(pelis);
     })
+
+    it("busco avengers",async ()=>{
+        await service.createMovie("the avengers","imagen url","trailer url");
+        await service.createMovie("the avengers2","imagen url","trailer url");
+        await service.createMovie("the avengers3","imagen url","trailer url");
+       let pelis= await service.search('the');
+       expect(3).to.equal(pelis.length); 
+    })
 })
