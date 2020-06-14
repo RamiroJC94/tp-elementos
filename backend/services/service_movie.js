@@ -23,6 +23,18 @@ export default class ServiceMovie{
           })
           return pelis; 
        }
+
+       async search(text){
+          const reg= new RegExp(text,"i") // equivalente a /text/i
+         try {
+              let movies= await Movie.find({titulo: {$regex:reg}})
+              
+             return movies; 
+                    
+         } catch (error) {
+              return []           
+         }
+        }
         
 
 } 

@@ -47,6 +47,18 @@ app.post('/user',async  (req, res) => {
 
     res.send("user guardado");
 });
+app.get('/search',async (req,res)=>{
+    monguito.openConnection()
+    if(req.query.titulo){
+        const pelis=await serviceMovie.search(req.query.titulo);
+        res.send(pelis);
+    }
+    else{
+    const allpelis=await serviceMovie.getMovies();
+    res.send(allpelis);}
+    monguito.closeConnection();
+
+})
 
 router.route('/movies')
     .get(async function(req,res){

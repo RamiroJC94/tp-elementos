@@ -1,5 +1,4 @@
 import React from 'react';
-import api from '../api/api';
 import  '../styles/movie.css'
 import {Link} from 'react-router-dom'
 

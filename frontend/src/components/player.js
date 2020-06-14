@@ -21,7 +21,7 @@ class Player extends React.Component {
     ex=()=>
     this.state.peli== null ? <div></div>: <div>
     <NavBarPlayer></NavBarPlayer>
-    <div style={{backgroundColor: "#151515"}}>
+    <div >
       <div className="movie">
           <h1>{this.state.peli.titulo}</h1>
       </div>

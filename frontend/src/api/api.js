@@ -14,7 +14,8 @@ const request = (type, path, body) =>
 
 const api ={
     getMovies:()=> request('get', '/movies'), 
-   login:(body) => request('post',`/users/login`,body)
+   login:(body) => request('post',`/users/login`,body),
+   search:(title)=>request('get','/search/?titulo='+title)
 }
 
 export default api;
