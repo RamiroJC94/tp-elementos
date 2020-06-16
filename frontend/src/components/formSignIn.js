@@ -19,6 +19,7 @@ changeHandler = (e) => {
     this.setState({[[e.target.controlId]: e.target.value]})
 //    ------- ACA ESTARIA SETEANDO EL JSON A PARTIR DEL CONTROLID & VALUE DEL FORM -------
 //    ------- CADA VEZ QUE HAY UN CAMBIO EN EL HANDLER PISA EL VALUE DE ESE CONTROLID -------
+//    ------- NOSE SI ESTA HACIENDO BIEN EL TARGET -------
 }
 
 submitHandler = e => {
