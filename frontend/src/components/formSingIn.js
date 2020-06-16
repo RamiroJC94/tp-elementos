@@ -15,31 +15,43 @@ class formSingIn extends React.Component{
         }
     }
 
+changeHandler = (e) => {
+    this.setState({[[e.target.controlId]: e.target.value]})
+    ------- ACA ESTARIA SETEANDO EL JSON A PARTIR DEL CONTROLID & VALUE DEL FORM -------
+}
+
+submitHandler = e => {
+    e.preventDefault()
+    console.log(this.state)
+    axios
+}
+
     render(){
         const {user, email, pss, isAdm} = this.state
         return(
             <div>
-                <Form>
+                <Form onSubmit={this.submitHandler}>
                     <Form.Group controlId="formGroupUser">
                         <Form.Label>User Name</Form.Label>
-                        <Form.Control placeholder="Enter Your User" />
+                        <Form.Control placeholder="Enter Your User" value={user} onchange={this.changeHandler}/>
                     </Form.Group>
 
                     <Form.Group controlId="formGroupEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
+                        <Form.Control type="email" placeholder="Enter email" value={email} onchange={this.changeHandler}/>
                     </Form.Group>
 
                     <Form.Group controlId="formGroupPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" value={pss} onchange={this.changeHandler}/>
                     </Form.Group>
 
                     <Form.Group id="formGridCheckboxAdm">
                         <Form.Check type="checkbox" label="Is Adm?" />
+                        ------- ACA ME ESTA HACIENDO FALTA UN SET para la const isAdm -------
+                        -------     TAMBIEN HACE FALTA EL OnCHANGE a CHANGEHANDLER -------
                     </Form.Group>
-
-                     <Button  variant="primary" onClick={this.logear}>Login</Button>
+                     <Button  type="submit">Sign In</Button>
                 </Form>
             </div>
         )
