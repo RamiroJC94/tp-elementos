@@ -66,9 +66,10 @@ signIn=()=>{
                       
                         <Form.Check type="checkbox" label="idAdmin" onClick={this.handlerCheckbox} />
                     </Form.Group>
+                    <div style={{textAlign:"center",display: "flex"}}>
                      <Button  variant="primary" onClick={this.signIn}>Sign In</Button>
                      <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
-
+                    </div>
                 </Form>
             </div>
         )
