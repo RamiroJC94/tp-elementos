@@ -15,14 +15,14 @@ afterEach(()=>{
 
 describe("test service user", () =>{
      it("inserto a pepe y y lo recupero",async ()=>{
-          await service.createUser("pepe@gmail.com","bernadro15");
-          const user = await service.findUserByUsername("pepe@gmail.com");    
-          expect(user.username).to.equal("pepe@gmail.com");
+          await service.createUser("pepe@gmail.com","pepe15","bernadro15",false);
+          const user = await service.findUserByUsername("pepe15");    
+          expect(user.username).to.equal("pepe15");
      })
      it("pepe se logea y tiene exito",async ()=>{
-      await service.createUser("pepe@gmail.com","bernadro15");
-      const pepe=await service.login("pepe@gmail.com","bernadro15");
-         expect("pepe@gmail.com").to.equal(pepe.username);
+      await service.createUser("pepe@gmail.com","pepe15","bernadro15",false);
+      const pepe=await service.login("pepe15","bernadro15");
+         expect("pepe15").to.equal(pepe.username);
      }) 
      it("juan se logea y fracasa",async()=>{
           

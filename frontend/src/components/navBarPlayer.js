@@ -16,7 +16,7 @@ export default class NavBarPlayer extends React.Component{
         <strong>MovieMoon</strong>
       </Navbar.Brand>
       <Navbar.Brand >
-      <Link to="/">Home</Link>
+        <Link to="/">Home</Link>
       </Navbar.Brand >
       <Navbar.Collapse className="justify-content-end">
       <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>

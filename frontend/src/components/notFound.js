@@ -13,7 +13,9 @@ import {withRouter}from 'react-router-dom';
             <div >
                 <h1 className="not">404 Page Not Found</h1>
                 <Link id="irInicio" to="/"> Ir al inicio </Link>
+                <Link to="/notFound/addMovies">Agregar Pelicula</Link>
             </div>
+
           </div>
         );
     }

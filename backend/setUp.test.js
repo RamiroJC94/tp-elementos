@@ -22,11 +22,11 @@ await service.createMovie("The Avengers","https://66.media.tumblr.com/7e27e91435
               
 await service.createMovie("Avengers: Age of Ultron","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/5/54/Avengers_Age_Of_Ultron_Poster.png/revision/latest/scale-to-width-down/1000?cb=20191029195118&path-prefix=es","https://www.youtube.com/watch?v=tmeOjFno6Do");
          
-await service.createMovie("Avengers: Infinity War","https://pics.filmaffinity.com/avengers_infinity_war-181539353-large.jpg","https://www.youtube.com/watch?v=6ZfuNTqbHE8");
+await service.createMovie("Avengers: Infinity War","https://images-na.ssl-images-amazon.com/images/I/81En6m%2BG2%2BL._AC_SY550_.jpg","https://www.youtube.com/watch?v=6ZfuNTqbHE8");
      
 await service.createMovie("Avengers: Endgame","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Avenger_Endgame_Poster_Oficial.png/revision/latest/scale-to-width-down/1000?cb=20190326185910&path-prefix=es","https://www.youtube.com/watch?v=TcMBFSGVi1c");
         
-await service.createMovie("Mi vecino Totoro","https://pics.filmaffinity.com/tonari_no_totoro-974352061-large.jpg","https://www.youtube.com/watch?v=BjeBG8Xrci8");
+await service.createMovie("Mi vecino Totoro","https://i.pinimg.com/originals/39/a7/c3/39a7c36682abcc1f93e339611ae0f0ab.jpg","https://www.youtube.com/watch?v=BjeBG8Xrci8");
         
 await service.createMovie("Nicky, la aprendiz de bruja","http://www.c1n3.org/m/miyazaki01h/images/1989%20Majo%20no%20takkyubin%20-%20Nicky%20la%20aprendiz%20de%20bruja%20(ing)%20(dvd)%2001.jpg","https://www.youtube.com/watch?v=4bG17OYs-GA");
         
@@ -36,7 +36,7 @@ await service.createMovie("Porco Rosso","https://resizing.flixster.com/JsT-O0qUP
         
 await service.createMovie("Puedo escuchar el mar","https://i.pinimg.com/564x/a0/91/d3/a091d3426ec519fb7eb51a943e5dc11c.jpg","https://www.youtube.com/watch?v=VciuDweg61c");
         
-await service.createMovie("Susurros del corazon","https://pics.filmaffinity.com/mimi_wo_sumaseba-122481858-mmed.jpg","https://www.youtube.com/watch?v=ywFbbZXMsGs");
+await service.createMovie("Susurros del corazon","https://es.web.img3.acsta.net/r_1280_720/pictures/15/09/23/13/01/438692.jpg","https://www.youtube.com/watch?v=ywFbbZXMsGs");
         
 await service.createMovie("La princesa Mononoke","https://pm1.narvii.com/6887/89186e5bbecbe350acfe21ec56c1695ce7e690d1r1-1000-1500v2_hq.jpg","https://www.youtube.com/watch?v=4OiMOHRDs14");
         
@@ -48,7 +48,8 @@ await service.createMovie("El castillo ambulante","http://es.web.img3.acsta.net/
         
 await service.createMovie("La colina de las amapolas","https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/cover_290x414/public/media/image/2020/04/colina-amapolas-1910129.jpg?itok=MOcBZhrh","https://www.youtube.com/watch?v=9-rhgSCAqDU");
 
-await serviceUser.createUser("pepe@gmail.com","bernadro15");
+await serviceUser.createUser("ash@gmail.com","ash10","123",true);
+await serviceUser.createUser("a@gmail.com","a","1234",false);
 })
     })
 

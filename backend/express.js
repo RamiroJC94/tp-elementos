@@ -1,8 +1,10 @@
 import express from 'express';
 import MongooseConnection from './services/connection.js';
-import ServiceUser from './services/service_user.js'
-import ServiceMovie from './services/service_movie.js'
+import ServiceUser from './services/service_user.js';
+import ServiceMovie from './services/service_movie.js';
 import cors from 'cors';
+
+
 var monguito=new MongooseConnection();
 var service = new ServiceUser();
 let serviceMovie = new ServiceMovie();
@@ -28,6 +30,7 @@ app.post('/users/login',async (req,res)=>{
     monguito.openConnection();
     try{
         let user = await service.login(req.body.username,req.body.password);
+        console.log(user)
         res.send(user);
         monguito.closeConnection();
     } catch(error){
@@ -41,12 +44,26 @@ app.post('/users/login',async (req,res)=>{
 app.post('/user',async  (req, res) => {
     console.log(req.body);
 
+
     monguito.openConnection();
-    await service.createUser(req.body.name,req.body.mail,req.body.username);
+    await service.createUser(req.body.mail,req.body.username,req.body.password,req.body.idAdmin);
+    const user=await service.findUserByUsername(req.body.username);
+    monguito.closeConnection();
+    console.log(user)
+    res.send(user);
+});
+
+app.post(`/addMovies`, async (req, res) => {
+    console.log(req.body);
+
+    monguito.openConnection();
+    await serviceMovie.createMovie(req.body.titulo,req.body.imagen,req.body.trailer);
     monguito.closeConnection();
 
-    res.send("user guardado");
+    res.send("movie guardado");
 });
+
+
 app.get('/search',async (req,res)=>{
     monguito.openConnection()
     if(req.query.titulo){
@@ -59,6 +76,16 @@ app.get('/search',async (req,res)=>{
     monguito.closeConnection();
 
 })
+app.post(`/addMovies`, async (req, res) => {
+    console.log(req.body);
+
+    monguito.openConnection();
+    await serviceMovie.createMovie(req.body.titulo,req.body.imagen,req.body.trailer);
+    monguito.closeConnection();
+
+    res.send("movie guardado");
+});
+
 
 router.route('/movies')
     .get(async function(req,res){
