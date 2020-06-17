@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import '../styles/formSignIn.css'
 import api from '../api/api';
 
-export default class FormSignIn extends React.Component{
+ class FormSignIn extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -30,10 +30,8 @@ handlerCheckbox=()=>{
     }
 signIn=()=>{
     const datos={mail:this.state.email,username:this.state.user,password:this.state.password,idAdmin:this.state.isAdmin}
-   api.signIn(datos)
-   .then(data=>{
-    this.props.history.push("/");
-   })
+    api.signIn(datos)
+   .then(data => this.props.history.push("/"))
    .catch(error=>console.log(error))
 }
     render(){
@@ -69,3 +67,4 @@ signIn=()=>{
         )
     }
 }
+export default withRouter(FormSignIn)
