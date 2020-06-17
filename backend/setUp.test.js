@@ -18,7 +18,7 @@ after(()=>{
 
 describe("setUp",()=>{
     it("load movies y un user",async ()=>{
-await service.createMovie("The Avengers","https://66.media.tumblr.com/7e27e91435d57790d9d70944c64baad2/tumblr_inline_nnmj1e7oXR1qa2gkq_500.jpg","https://www.youtube.com/watch?v=eOrNdBpGMv8");
+await service.createMovie("The Avengers","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/2/2b/The_Avengers_Poster.png/revision/latest/scale-to-width-down/337?cb=20150610135853&path-prefix=es","https://www.youtube.com/watch?v=eOrNdBpGMv8");
               
 await service.createMovie("Avengers: Age of Ultron","https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/5/54/Avengers_Age_Of_Ultron_Poster.png/revision/latest/scale-to-width-down/1000?cb=20191029195118&path-prefix=es","https://www.youtube.com/watch?v=tmeOjFno6Do");
          
@@ -48,7 +48,7 @@ await service.createMovie("El castillo ambulante","http://es.web.img3.acsta.net/
         
 await service.createMovie("La colina de las amapolas","https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/cover_290x414/public/media/image/2020/04/colina-amapolas-1910129.jpg?itok=MOcBZhrh","https://www.youtube.com/watch?v=9-rhgSCAqDU");
 
-await serviceUser.createUser("pepe@gmail.com","bernadro15");
+await serviceUser.createUser("a@a.com","123");
 })
     })
 
