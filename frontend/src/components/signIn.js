@@ -67,6 +67,8 @@ signIn=()=>{
                         <Form.Check type="checkbox" label="idAdmin" onClick={this.handlerCheckbox} />
                     </Form.Group>
                      <Button  variant="primary" onClick={this.signIn}>Sign In</Button>
+                     <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
+
                 </Form>
             </div>
         )

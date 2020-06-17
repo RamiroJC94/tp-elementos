@@ -28,6 +28,7 @@ app.post('/users/login',async (req,res)=>{
     monguito.openConnection();
     try{
         let user = await service.login(req.body.username,req.body.password);
+        console.log(user)
         res.send(user);
         monguito.closeConnection();
     } catch(error){
@@ -41,11 +42,12 @@ app.post('/users/login',async (req,res)=>{
 app.post('/user',async  (req, res) => {
     console.log(req.body);
 
+
     monguito.openConnection();
-    await service.createUser(req.body.mail,req.body.username,req.body.password,req.body.isAdmin);
+    await service.createUser(req.body.mail,req.body.username,req.body.password,req.body.idAdmin);
     const user=await service.findUserByUsername(req.body.username);
     monguito.closeConnection();
-
+    console.log(user)
     res.send(user);
 });
 app.get('/search',async (req,res)=>{

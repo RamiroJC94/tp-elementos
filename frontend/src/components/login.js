@@ -20,7 +20,14 @@ import api from '../api/api';
     logear=()=>{
         let body = {username: this.state.email, password: this.state.password}
         api.login(body)
-        .then(data=>{this.props.history.push("/notFound")})
+        .then(data=>{
+            console.log(data.isAdmin)
+            if(data.isAdmin){
+                this.props.history.push("/notFound");    
+            }
+            else{
+                this.props.history.push("/");
+            }})
         .catch(error=>this.setState({checkLogin:this.errorLog("email o password incorrectos")}))
     } 
     handleEmail = (event) =>{
@@ -39,7 +46,7 @@ import api from '../api/api';
         {this.state.checkLogin} 
              <Form.Group >
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Ingresar Correo" 
+                <Form.Control  placeholder="Ingresar Correo" 
                  value={this.state.email} onChange={this.handleEmail}  />
             </Form.Group>
             <Form.Group >
