@@ -48,6 +48,7 @@ await service.createMovie("El castillo ambulante","http://es.web.img3.acsta.net/
         
 await service.createMovie("La colina de las amapolas","https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/cover_290x414/public/media/image/2020/04/colina-amapolas-1910129.jpg?itok=MOcBZhrh","https://www.youtube.com/watch?v=9-rhgSCAqDU");
 
+await serviceUser.createUser("ash@gmail.com","ash10","123",true);
 await serviceUser.createUser("a@gmail.com","1234");
 })
     })
