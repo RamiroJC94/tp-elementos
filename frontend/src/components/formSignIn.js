@@ -11,16 +11,23 @@ export default class FormSignIn extends React.Component{
             email: '',
             pss: '',
             isAdm: ''
-//            ------- ¿QUE MAS NECESITO? CONSULTAR CON LOS CHICOS -------
         }
     }
 
-//changeHandler = (e) => {
-//    this.setState({[[e.target.controlId] : e.target.value]})
-//    ------- ACA ESTARIA SETEANDO EL JSON A PARTIR DEL CONTROLID & VALUE DEL FORM -------
-//    ------- CADA VEZ QUE HAY UN CAMBIO EN EL HANDLER PISA EL VALUE DE ESE CONTROLID -------
-//    ------- NOSE SI ESTA HACIENDO BIEN EL TARGET -------
-//}
+changeUserHandler = (e) => {
+    this.setState({user : e.target.value.trim()})
+}
+
+changeEmailHandler = (e) => {
+    this.setState({Email : e.target.value.trim()})
+}
+changePssHandler = (e) => {
+    this.setState({Pss : e.target.value.trim()})
+}
+
+changeIsAdmHandler = (e) => {
+    this.setState({Adm : true})
+}
 
 submitHandler = e => {
     e.preventDefault()
@@ -35,23 +42,22 @@ submitHandler = e => {
                 <Form onSubmit={this.submitHandler}>
                     <Form.Group controlId="formGroupUser">
                         <Form.Label>User Name</Form.Label>
-                        <Form.Control placeholder="Enter Your User" value={user} onchange={this.changeHandler}/>
+                        <Form.Control placeholder="Enter Your User" value={this.state.user} onchange={this.changeUserHandler}/>
                     </Form.Group>
 
                     <Form.Group controlId="formGroupEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" value={email} onchange={this.changeHandler}/>
+                        <Form.Control type="email" placeholder="Enter email" value={this.state.email} onchange={this.changeEmailHandler}/>
                     </Form.Group>
 
                     <Form.Group controlId="formGroupPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" value={pss} onchange={this.changeHandler}/>
+                        <Form.Control type="password" placeholder="Password" value={this.state.pss} onchange={this.changePssHandler}/>
                     </Form.Group>
 
                     <Form.Group id="formGridCheckboxAdm">
-                        <Form.Check type="checkbox" label="Is Adm?" />
-                        ------- ACA ME ESTA HACIENDO FALTA UN SET para la const isAdm -------
-                        -------     TAMBIEN HACE FALTA EL OnCHANGE a CHANGEHANDLER -------
+                        {/* <Form.Check type="checkbox" label="Is Adm?" /> */}
+                        <Button  onclick={this.changeIsAdmHandler}>Is Adm?</Button>
                     </Form.Group>
                      <Button  type="submit">Sign In</Button>
                 </Form>
