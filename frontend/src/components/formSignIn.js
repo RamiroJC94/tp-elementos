@@ -1,65 +1,69 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import '../styles/formSignIn.css'
+import api from '../api/api';
 
 export default class FormSignIn extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            user: '',
-            email: '',
-            pss: '',
-            isAdm: ''
+            user: "",
+            email:"",
+            isAdmin: false,
+            password:""
         }
     }
 
-changeUserHandler = (e) => {
-    this.setState({user : e.target.value.trim()})
-}
 
-changeEmailHandler = (e) => {
-    this.setState({Email : e.target.value.trim()})
+handleUser=(event)=>{
+        this.setState({user:event.target.value.trim()})  
+      }
+handlePassword = (event) =>{
+    this.setState({password:event.target.value.trim()})
 }
-changePssHandler = (e) => {
-    this.setState({Pss : e.target.value.trim()})
+handleEmail = (event) =>{
+    this.setState({email:event.target.value.trim()})
+}  
+handlerCheckbox=()=>{
+    this.setState({isAdmin:!this.state.isAdmin})
+    }
+signIn=()=>{
+    const datos={mail:this.state.email,username:this.state.user,password:this.state.password,idAdmin:this.state.isAdmin}
+   api.signIn(datos)
+   .then(data=>{
+    this.props.history.push("/");
+   })
+   .catch(error=>console.log(error))
 }
-
-changeIsAdmHandler = (e) => {
-    this.setState({Adm : true})
-}
-
-submitHandler = e => {
-    e.preventDefault()
-    console.log(this.state)
-//  ------- ¿QUE HACER CUANDO SE MANDA EL SUBMIT? -------
-}
-
     render(){
-        const {user, email, pss, isAdm} = this.state
+        
         return(
-            <div>
-                <Form onSubmit={this.submitHandler}>
-                    <Form.Group controlId="formGroupUser">
-                        <Form.Label>User Name</Form.Label>
-                        <Form.Control placeholder="Enter Your User" value={this.state.user} onchange={this.changeUserHandler}/>
-                    </Form.Group>
+            <div className="centrarForm">
+                <Form >
+                <Form.Group >
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="email" placeholder="Ingresar Correo" 
+                   value={this.state.email} onChange={this.handleEmail}  />
+                </Form.Group>
+                <Form.Group >
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control  placeholder="Username" 
+                   value={this.state.user} onChange={this.handleUser}  />
+                </Form.Group>
+           
+                  
+          <Form.Group >
+                <Form.Label>Password</Form.Label>
+                <Form.Control  type="password" placeholder="Password"
+                value={this.state.password} onChange={this.handlePassword} />
+            </Form.Group>
 
-                    <Form.Group controlId="formGroupEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" value={this.state.email} onchange={this.changeEmailHandler}/>
+                    <Form.Group >
+                      
+                        <Form.Check type="checkbox" label="idAdmin" onClick={this.handlerCheckbox} />
                     </Form.Group>
-
-                    <Form.Group controlId="formGroupPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" value={this.state.pss} onchange={this.changePssHandler}/>
-                    </Form.Group>
-
-                    <Form.Group id="formGridCheckboxAdm">
-                        {/* <Form.Check type="checkbox" label="Is Adm?" /> */}
-                        <Button  onclick={this.changeIsAdmHandler}>Is Adm?</Button>
-                    </Form.Group>
-                     <Button  type="submit">Sign In</Button>
+                     <Button  variant="primary" onClick={this.signIn}>Sign In</Button>
                 </Form>
             </div>
         )
