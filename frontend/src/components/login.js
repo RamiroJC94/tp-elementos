@@ -44,7 +44,7 @@ import api from '../api/api';
         <Form >
         {this.state.checkLogin} 
              <Form.Group >
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Username</Form.Label>
                 <Form.Control  placeholder="Ingresar Username"
                  value={this.state.email} onChange={this.handleEmail}  />
             </Form.Group>
@@ -53,7 +53,7 @@ import api from '../api/api';
                 <Form.Control  type="password" placeholder="Password"
                 value={this.state.password} onChange={this.handlePassword} />
             </Form.Group>
-            <div style={{textAlign:"center"}}>
+            <div style={{textAlign:"center",display: "flex"}}>
             <Button  variant="primary" onClick={this.logear}>
                 Login
             </Button>
