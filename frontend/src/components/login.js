@@ -20,7 +20,7 @@ import api from '../api/api';
     logear=()=>{
         let body = {username: this.state.email, password: this.state.password}
         api.login(body)
-        .then(data=>{this.props.history.push("/notFound")})
+        .then(data=>{this.props.history.push("/addMovies")})
         .catch(error=>this.setState({checkLogin:this.errorLog("email o password incorrectos")}))
     } 
     handleEmail = (event) =>{

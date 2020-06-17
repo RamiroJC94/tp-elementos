@@ -1,8 +1,10 @@
 import express from 'express';
 import MongooseConnection from './services/connection.js';
-import ServiceUser from './services/service_user.js'
-import ServiceMovie from './services/service_movie.js'
+import ServiceUser from './services/service_user.js';
+import ServiceMovie from './services/service_movie.js';
 import cors from 'cors';
+
+
 var monguito=new MongooseConnection();
 var service = new ServiceUser();
 let serviceMovie = new ServiceMovie();
@@ -47,6 +49,18 @@ app.post('/user',async  (req, res) => {
 
     res.send("user guardado");
 });
+
+app.post(`/addMovies`, async (req, res) => {
+    console.log(req.body);
+
+    monguito.openConnection();
+    await serviceMovie.createMovie(req.body.titulo,req.body.imagen,req.body.trailer);
+    monguito.closeConnection();
+
+    res.send("movie guardado");
+});
+
+
 app.get('/search',async (req,res)=>{
     monguito.openConnection()
     if(req.query.titulo){

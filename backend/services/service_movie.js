@@ -6,7 +6,8 @@ export default class ServiceMovie{
        }
 
        async createMovie(titulo,imagen,trailer){
-              const movie=new Movie({
+
+           const movie=new Movie({
                     titulo:titulo,
                     imagen:imagen,
                     trailer:trailer,
