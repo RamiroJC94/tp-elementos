@@ -3,9 +3,9 @@ import {withRouter} from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class formSignIn extends React.Component{
-    contructor(prop){
-        super(prop)
+export default class FormSignIn extends React.Component{
+    constructor(props){
+        super(props);
         this.state = {
             user: '',
             email: '',
@@ -15,12 +15,12 @@ class formSignIn extends React.Component{
         }
     }
 
-changeHandler = (e) => {
-    this.setState({[[e.target.controlId]: e.target.value]})
+//changeHandler = (e) => {
+//    this.setState({[[e.target.controlId] : e.target.value]})
 //    ------- ACA ESTARIA SETEANDO EL JSON A PARTIR DEL CONTROLID & VALUE DEL FORM -------
 //    ------- CADA VEZ QUE HAY UN CAMBIO EN EL HANDLER PISA EL VALUE DE ESE CONTROLID -------
 //    ------- NOSE SI ESTA HACIENDO BIEN EL TARGET -------
-}
+//}
 
 submitHandler = e => {
     e.preventDefault()
@@ -57,7 +57,5 @@ submitHandler = e => {
                 </Form>
             </div>
         )
+    }
 }
-}
-
-export default withRouter(formSignIn)

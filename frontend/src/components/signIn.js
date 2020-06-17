@@ -1,15 +1,15 @@
 import React from 'react'
 import {withRouter}from 'react-router-dom';
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
-import formSingIn from './formSignIn'
+import FormSignIn from './formSignIn'
 
-class pageSignIn extends React.Component{
+class signIn extends React.Component{
     render(){
         return(
             <div>
-                <formSignIn/>
+                <FormSignIn/>
             </div>
         )
     }
 }
+
+export default withRouter(signIn)
