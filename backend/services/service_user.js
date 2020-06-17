@@ -5,12 +5,13 @@ export default class ServiceUser{
         
     }
 
-    async createUser(username,password){
+    async createUser(mail,username,password,admin){
      
         let userToCreate=new User({
-            
+           mail:mail, 
            username: username,
            password: password,
+           isAdmin:admin,
            
         }); 
         await userToCreate.save();   

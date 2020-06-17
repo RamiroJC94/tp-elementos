@@ -42,10 +42,11 @@ app.post('/user',async  (req, res) => {
     console.log(req.body);
 
     monguito.openConnection();
-    await service.createUser(req.body.name,req.body.mail,req.body.username);
+    await service.createUser(req.body.mail,req.body.username,req.body.password,req.body.isAdmin);
+    const user=await service.findUserByUsername(req.body.username);
     monguito.closeConnection();
 
-    res.send("user guardado");
+    res.send(user);
 });
 app.get('/search',async (req,res)=>{
     monguito.openConnection()
