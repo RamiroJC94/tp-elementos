@@ -45,7 +45,7 @@ import api from '../api/api';
         {this.state.checkLogin} 
              <Form.Group >
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Ingresar Correo" 
+                <Form.Control  placeholder="Ingresar Username"
                  value={this.state.email} onChange={this.handleEmail}  />
             </Form.Group>
             <Form.Group >
@@ -57,6 +57,7 @@ import api from '../api/api';
             <Button  variant="primary" onClick={this.logear}>
                 Login
             </Button>
+            <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
             </div>
             </Form>
             </div>

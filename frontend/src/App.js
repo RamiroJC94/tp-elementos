@@ -25,7 +25,7 @@ render(){
         <Route exact path="/player/:video" render={props=><Player getMovie={this.getMovie}/>}></Route>
         <Route exact path="/login" render={Login}></Route>
         <Route exact path="/signIn" render={SignIn}></Route>
-          <Route exact path="/addMovies" render={AddMovie}></Route>
+        <Route exact path="/addMovies" render={AddMovie}></Route>
       </Switch>
        </BrowserRouter>
        );

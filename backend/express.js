@@ -76,6 +76,16 @@ app.get('/search',async (req,res)=>{
     monguito.closeConnection();
 
 })
+app.post(`/addMovies`, async (req, res) => {
+    console.log(req.body);
+
+    monguito.openConnection();
+    await serviceMovie.createMovie(req.body.titulo,req.body.imagen,req.body.trailer);
+    monguito.closeConnection();
+
+    res.send("movie guardado");
+});
+
 
 router.route('/movies')
     .get(async function(req,res){
