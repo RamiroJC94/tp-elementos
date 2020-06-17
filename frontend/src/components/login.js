@@ -21,9 +21,9 @@ import api from '../api/api';
         let body = {username: this.state.email, password: this.state.password}
         api.login(body)
         .then(data=>{
-            console.log(data.isAdmin)
+            
             if(data.isAdmin){
-                this.props.history.push("/notFound");    
+                this.props.history.push("/addMovies");    
             }
             else{
                 this.props.history.push("/");
@@ -46,7 +46,7 @@ import api from '../api/api';
         {this.state.checkLogin} 
              <Form.Group >
                 <Form.Label>Email</Form.Label>
-                <Form.Control  placeholder="Ingresar Correo" 
+                <Form.Control  placeholder="Ingresar Username" 
                  value={this.state.email} onChange={this.handleEmail}  />
             </Form.Group>
             <Form.Group >
@@ -58,6 +58,7 @@ import api from '../api/api';
             <Button  variant="primary" onClick={this.logear}>
                 Login
             </Button>
+            <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
             </div>
             </Form>
             </div>

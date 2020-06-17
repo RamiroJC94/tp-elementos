@@ -13,7 +13,8 @@ const request = (type, path, body) =>
     .catch(error => Promise.reject(error.response.data));
 
 const api ={
-    getMovies:()=> request('get', '/movies'), 
+  createMovie:(body)=> request('post',`/addMovies`,body),
+  getMovies:()=> request('get', '/movies'), 
    login:(body) => request('post',`/users/login`,body),
    search:(title)=>request('get','/search/?titulo='+title),
    signIn:(body)=>request('post','/user',body)
