@@ -20,7 +20,8 @@ export default class ServiceMovie{
        async getMovies(){
           let result=await Movie.find();
           let pelis=result.map(movie => {
-            return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer}
+            return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer,
+            comentarios:movie.comentarios}
           })
           return pelis; 
        }
