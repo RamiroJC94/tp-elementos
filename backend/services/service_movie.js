@@ -36,6 +36,29 @@ export default class ServiceMovie{
               return []           
          }
         }
+
+/*        async updateMovie(titulo,imagen,trailer){
+           var query = {titulo:titulo} , options = { multi: true };
+                Movie.update(query,{imagen:imagen},options,this.callback)
+
+                return "succes"
+        }
+
+        callback (err, numAffected) {
+
+         }*/
+
+    async updateMovie(titulo,imagen,trailer){
+/*        const movie = Movie.findOne({titulo:titulo});
+        const query = {titulo:titulo}*/
+
+            movie.update({titulo:titulo},{imagen:imagen},function (err) {
+                if (err) return console.error(err);
+            })
+
+
+        return "succes"
+    }
         
 
 } 

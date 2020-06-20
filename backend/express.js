@@ -75,17 +75,13 @@ app.get('/search',async (req,res)=>{
     res.send(allpelis);}
     monguito.closeConnection();
 
-})
-app.post(`/addMovies`, async (req, res) => {
-    console.log(req.body);
-
-    monguito.openConnection();
-    await serviceMovie.createMovie(req.body.titulo,req.body.imagen,req.body.trailer);
-    monguito.closeConnection();
-
-    res.send("movie guardado");
 });
 
+app.put('/updateMovies', async (req,res) => {
+    monguito.openConnection();
+    await serviceMovie.updateMovie(req.body.titulo,req.body.imagen,req.body.trailer);
+    monguito.closeConnection();
+});
 
 router.route('/movies')
     .get(async function(req,res){
