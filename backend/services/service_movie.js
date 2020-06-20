@@ -1,4 +1,4 @@
-import {Movie} from '../mongoose/movie'
+import {Movie,Comment} from '../mongoose/movie'
 
 export default class ServiceMovie{
        constructor(){
@@ -37,5 +37,24 @@ export default class ServiceMovie{
          }
         }
         
+        async createComment(title,username,text){
+           try {
+             const comment= new Comment({
+                username:username,
+                texto:text,
+               })
+               //(filter,update)
+              await Movie.findOneAndUpdate({titulo:title},
+               {$push:{comentarios:comment}}) 
+              return "se incerto con exito"     
+           } catch (error) {
+              console.log(error);
+           }
+        }
+
+        async commentsOfMovie(title){
+           const comments=await Movie.findOne({titulo:title});
+           return comments;
+        }
 
 } 

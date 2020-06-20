@@ -32,7 +32,7 @@ export default class ServiceUser{
                 throw "password o username incorrectos";
             }
             else{
-                console.log(user)
+               
                 return user;
             }
        
