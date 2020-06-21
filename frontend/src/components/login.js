@@ -22,7 +22,7 @@ import api from '../api/api';
         api.login(body)
         .then(data=>{
             if(data.isAdmin){
-                this.props.history.push("/addMovies");
+                this.props.history.push("/panelAdmin");
             }
             else{
                 this.props.history.push("/");

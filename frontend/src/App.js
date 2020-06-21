@@ -7,6 +7,7 @@ import Login from './components/login'
 import SignIn from './components/signIn'
 import AddMovie from "./components/addMovie";
 import UpdateMovie from "./components/updateMovie";
+import PanelAdmin from "./components/panelAdmin";
 
 export default class App extends React.Component{
   constructor(props){
@@ -29,6 +30,7 @@ render(){
           <Route exact path="/signIn" render={SignIn}></Route>
           <Route exact path="/addMovies" render={AddMovie}></Route>
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>
+          <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
 
       </Switch>
        </BrowserRouter>
