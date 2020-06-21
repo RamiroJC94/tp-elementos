@@ -9,6 +9,7 @@ import api from '../api/api';
      constructor(props){
          super(props);
          this.state={
+             setUser:props.userLogeado,
              checkLogin:null,
              email:"",
              password:""
@@ -21,7 +22,9 @@ import api from '../api/api';
         let body = {username: this.state.email, password: this.state.password}
         api.login(body)
         .then(data=>{
+            this.state.setUser(data);
             if(data.isAdmin){
+                
                 this.props.history.push("/addMovies");
             }
             else{

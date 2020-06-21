@@ -17,7 +17,9 @@ const api ={
     getMovies:()=> request('get', '/movies'), 
     login:(body) => request('post',`/users/login`,body),
     search:(title)=>request('get','/search/?titulo='+title),
-    signIn:(body)=>request('post','/user',body)
+    signIn:(body)=>request('post','/user',body),
+    createComment:(body)=>request('post','/movie/comment',body),
+    getComments:(title)=>request('get','/movie/comments/?titulo='+title)
 
 }
 
