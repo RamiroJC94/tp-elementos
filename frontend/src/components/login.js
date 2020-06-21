@@ -25,7 +25,7 @@ import api from '../api/api';
                 this.props.history.push("/addMovies");
             }
             else{
-                this.props.history.push("/");
+                this.props.history.push("/perfil");
             }})
         .catch(error=>this.setState({checkLogin:this.errorLog("email o password incorrectos")}))
     } 

@@ -43,6 +43,7 @@ render(){
       <Button variant="outline-info" onClick={this.executeSearch}>Search</Button>
     </Form>
     <Navbar.Collapse className="justify-content-end">
+    <Navbar.Brand> <Link to="/profile">Profile</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/signIn">Sing In</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>
     </Navbar.Collapse>

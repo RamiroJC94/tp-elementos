@@ -6,6 +6,7 @@ import Player from './components/player';
 import Login from './components/login'
 import SignIn from './components/signIn'
 import AddMovie from "./components/addMovie";
+import Profile from "./components/profile";
 export default class App extends React.Component{
   constructor(props){
     super(props)
@@ -26,6 +27,7 @@ render(){
         <Route exact path="/login" render={Login}></Route>
         <Route exact path="/signIn" render={SignIn}></Route>
         <Route exact path="/addMovies" render={AddMovie}></Route>
+        <Route exact path="/profile" render={Profile}></Route>
       </Switch>
        </BrowserRouter>
        );
