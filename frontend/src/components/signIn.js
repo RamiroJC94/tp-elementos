@@ -33,8 +33,8 @@ handlerCheckbox=()=>{
     this.setState({isAdmin:!this.state.isAdmin})
     }
 signIn=()=>{
-    const datos={mail:this.state.email,username:this.state.user,password:this.state.password,idAdmin:this.state.isAdmin}
-    api.signIn(datos)
+    const body={mail:this.state.email,username:this.state.user,password:this.state.password,idAdmin:this.state.isAdmin}
+    api.signIn(body)
    .then(data => this.props.history.push("/"))
    .catch(error=>console.log(error))
 }

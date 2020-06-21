@@ -25,6 +25,8 @@ app.get('/user', async (req,res)=>{
 }       
 );
 
+// NECESITO UNA FUNCION PARA MODIFICAR INFO USER DE MONGO
+
 app.post('/users/login',async (req,res)=>{
     console.log(req.body);
     monguito.openConnection();
