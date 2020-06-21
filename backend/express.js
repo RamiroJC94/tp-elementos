@@ -77,10 +77,11 @@ app.get('/search',async (req,res)=>{
 
 });
 
-app.put('/updateMovies', async (req,res) => {
+app.put(`/updateMovies`, async (req,res) => {
     monguito.openConnection();
     await serviceMovie.updateMovie(req.body.titulo,req.body.imagen,req.body.trailer);
     monguito.closeConnection();
+    res.send("Pelicula Actualizada")
 });
 
 router.route('/movies')

@@ -18,7 +18,7 @@ class UpdateMovie extends React.Component{
      errorLog = (messageError) => <ErrorLogin error={messageError}/>
 
     actualizar=()=>{
-        let body = {titulo: this.state.titulo, imagen: this.state.imagen, trailer: this.state.trailer}
+        let body = {titulo:this.state.titulo,imagen: this.state.imagen, trailer: this.state.trailer}
         api.updateMovie(body)
             .then(data=>{this.props.history.push("/")})
             .catch(error=>this.setState({checkEnvio:this.errorLog("algo mal anda capo")}))

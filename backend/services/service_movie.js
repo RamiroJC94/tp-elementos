@@ -49,10 +49,7 @@ export default class ServiceMovie{
          }*/
 
     async updateMovie(titulo,imagen,trailer){
-/*        const movie = Movie.findOne({titulo:titulo});
-        const query = {titulo:titulo}*/
-
-            movie.update({titulo:titulo},{imagen:imagen},function (err) {
+            Movie.update({titulo:titulo},{imagen:imagen,trailer:trailer},function (err) {
                 if (err) return console.error(err);
             })
 
