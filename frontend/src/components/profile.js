@@ -9,7 +9,7 @@ class Profile extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            user: "",
+            username: "",
             email:"",
             password:"",
             isAdmin: ""    //  EDITAR -- ACA DEBERIA APARECER LOS VALORES DEL PERFIL ACTUAL
@@ -22,7 +22,7 @@ class Profile extends React.Component{
       }
 
     handleUser = (event) =>{
-        this.setState({user:event.target.value.trim()})
+        this.setState({username:event.target.value.trim()})
     } 
     handleEmail = (event) =>{
         this.setState({email:event.target.value.trim()})
@@ -35,7 +35,7 @@ class Profile extends React.Component{
     }
     
     ChangePasswordUser=()=>{
-        const body={username:this.state.user,password:this.state.password}
+        const body={username:this.state.username,password:this.state.password}
         api.changePasswordUser(body)
        .then(data=>{this.props.history.push("/")})
        .catch(error=>this.setState({checkEnvio:this.errorLog("error in ChangePasswordUser")}))
@@ -63,7 +63,7 @@ class Profile extends React.Component{
                     <Form>
                         <Form.Group>
                             <Form.Label>User</Form.Label>
-                            <Form.Control type="text" placeholder="Enter your user name" value={this.state.user} onChange={this.handleUser}/>
+                            <Form.Control type="text" placeholder="Enter your user name" value={this.state.username} onChange={this.handleUser}/>
 
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" placeholder="Enter your email" value={this.state.email} onChange={this.handleEmail}/>
