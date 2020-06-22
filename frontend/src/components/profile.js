@@ -77,7 +77,7 @@ class Profile extends React.Component{
                     </Form>
                     {/* onClick={this.signIn} */}
                     <div style={{display:"flex",flexDirection:"row",justifyContent:"space-around", alignItems:"center"}}>
-                        <Button  variant="primary" onclick={this.ChangePasswordUser}>Edit</Button>
+                        <Button  variant="primary" onclick={this.ChangePasswordUser}>ChangePasswordUser</Button>
                         <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
                     </div>
                 </div>
