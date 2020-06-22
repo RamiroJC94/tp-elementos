@@ -34,14 +34,12 @@ class Profile extends React.Component{
         this.setState({isAdmin:event.target.value.trim()})
     }
     
-    signIn=()=>{
-        const body={mail:this.state.email,username:this.state.user,password:this.state.password,idAdmin:this.state.isAdmin}
-        api.searchUser(this.state.user)
-       .then(()=>console.log("HOLA MUNDO"))
-       .catch(error=>console.log(error))
+    ChangePasswordUser=()=>{
+        const body={username:this.state.user,password:this.state.password}
+        api.changePasswordUser(body)
+       .then(data=>{this.props.history.push("/")})
+       .catch(error=>this.setState({checkEnvio:this.errorLog("error in ChangePasswordUser")}))
     }
-    // data => console.log("HOLA MUNDO")
-    // data.username, data.mail, data.isAdmin
     
     render(){
         return(
@@ -79,7 +77,7 @@ class Profile extends React.Component{
                     </Form>
                     {/* onClick={this.signIn} */}
                     <div style={{display:"flex",flexDirection:"row",justifyContent:"space-around", alignItems:"center"}}>
-                        <Button  variant="primary" onclick={this.signIn}>Edit</Button>
+                        <Button  variant="primary" onclick={this.ChangePasswordUser}>Edit</Button>
                         <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
                     </div>
                 </div>
