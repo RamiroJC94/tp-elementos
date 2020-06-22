@@ -26,6 +26,11 @@ export default class ServiceUser{
            
     }
     //si no encuentra a nadie devuelve uno
+
+    async ChangePasswordUser(user){
+        // const res = await User.
+    }
+
     async login(username,password){
          const user= await User.findOne({username:username,password:password});
             if(user==null){
