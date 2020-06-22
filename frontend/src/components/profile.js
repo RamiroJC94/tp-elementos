@@ -9,10 +9,10 @@ class Profile extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            username: "",
             email:"",
+            username: "",
             password:"",
-            isAdmin: ""    //  EDITAR -- ACA DEBERIA APARECER LOS VALORES DEL PERFIL ACTUAL
+            isAdmin: false    //  EDITAR -- ACA DEBERIA APARECER LOS VALORES DEL PERFIL ACTUAL
         }
     }
 
@@ -35,12 +35,13 @@ class Profile extends React.Component{
     }
     
     ChangePasswordUser=()=>{
-        const body={username:this.state.username,password:this.state.password}
+        const body={email:this.state.email,username:this.state.username,password:this.state.password,isAdmin:this.state.isAdmin}
         api.changePasswordUser(body)
        .then(data=>{this.props.history.push("/")})
        .catch(error=>this.setState({checkEnvio:this.errorLog("error in ChangePasswordUser")}))
     }
     
+
     render(){
         return(
             <div className="centrarForm" style={{display: "flex", flexDirection:"row"}}>
@@ -77,7 +78,7 @@ class Profile extends React.Component{
                     </Form>
                     {/* onClick={this.signIn} */}
                     <div style={{display:"flex",flexDirection:"row",justifyContent:"space-around", alignItems:"center"}}>
-                        <Button  variant="primary" onclick={this.ChangePasswordUser}>ChangePasswordUser</Button>
+                        <Button  variant="primary" onClick={this.ChangePasswordUser}>ChangePasswordUser</Button>
                         <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
                     </div>
                 </div>
