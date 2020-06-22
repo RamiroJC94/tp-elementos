@@ -27,8 +27,11 @@ export default class ServiceUser{
     }
     //si no encuentra a nadie devuelve uno
 
-    async ChangePasswordUser(user){
-        // const res = await User.
+    async ChangePasswordUser(user,password){
+        User.update({user:user},{password:password},function(err){
+            if(err) return console.error(err);
+        })
+        return "succes"
     }
 
     async login(username,password){
