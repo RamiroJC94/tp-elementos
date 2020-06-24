@@ -21,7 +21,8 @@ const api ={
     signIn:(body)=>request('post','/user',body),
     createComment:(body)=>request('post','/movie/comment',body),
     getComments:(title)=>request('get','/movie/comments/?titulo='+title)
-
+    searchUser:(body)=>request('get','/user',body),
+    changePasswordUser:(body)=> request('put','/updatePasswordUser',body)
 }
 
 export default api;

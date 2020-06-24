@@ -27,7 +27,7 @@ import api from '../api/api';
                 this.props.history.push("/panelAdmin");
             }
             else{
-                this.props.history.push("/");
+                this.props.history.push("/profile");
             }})
         .catch(error=>this.setState({checkLogin:this.errorLog("email o password incorrectos")}))
     } 

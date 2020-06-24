@@ -6,6 +6,7 @@ import Player from './components/player';
 import Login from './components/login'
 import SignIn from './components/signIn'
 import AddMovie from "./components/addMovie";
+import Profile from "./components/profile";
 import UpdateMovie from "./components/updateMovie";
 import PanelAdmin from "./components/panelAdmin";
 
@@ -32,7 +33,7 @@ render(){
           <Route exact path="/addMovies" render={AddMovie}></Route>
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>
           <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
-
+          <Route exact path="/profile" render={Profile}></Route>
       </Switch>
        </BrowserRouter>
        );

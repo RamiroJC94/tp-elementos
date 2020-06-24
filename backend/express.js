@@ -25,6 +25,13 @@ app.get('/user', async (req,res)=>{
 }       
 );
 
+app.put('/updatePasswordUser', async (req,res) =>{
+    monguito.openConnection();
+    await service.ChangePasswordUser(req.body.username,req.body.password);
+    monguito.closeConnection();
+    res.send("Password Actualizado")
+})
+
 app.post('/users/login',async (req,res)=>{
     console.log(req.body);
     monguito.openConnection();
