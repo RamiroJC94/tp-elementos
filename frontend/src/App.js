@@ -13,11 +13,12 @@ export default class App extends React.Component{
   constructor(props){
     super(props)
     this.state={
-      movie:"nada"
+      movie:"nada",
+      user:null
     }
   } 
   setMovie=(movi)=> {this.setState({movie:movi})}
- 
+  setUser=(usuario)=>{this.setState({user:usuario})}
   getMovie=()=>this.state.movie;
 render(){
   return (  

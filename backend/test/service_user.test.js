@@ -1,17 +1,9 @@
 import {expect} from 'chai';
-import MongooseConnection from '../services/connection.js';
 import ServiceUser from '../services/service_user.js'
-
-var monguito = new MongooseConnection();
 var service = new ServiceUser();
 
-beforeEach(()=>{
-    monguito.openConnection();
-});
 
-afterEach(()=>{
-    monguito.closeConnection();
-})
+
 
 describe("test service user", () =>{
      it("inserto a pepe y y lo recupero",async ()=>{

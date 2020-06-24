@@ -1,23 +1,7 @@
 import {expect} from 'chai';
-import MongooseConnection from '../services/connection.js';
 import ServiceMovie from '../services/service_movie.js'
-import mongoose from 'mongoose';
-var monguito = new MongooseConnection();
+
 var service = new ServiceMovie();
-
-beforeEach(()=>{
-    monguito.openConnection();
-});
-
-afterEach(async ()=>{
-        const collections = await mongoose.connection.db.collections();
-      
-        for (let collection of collections) {
-          await collection.remove();
-        }
-      
-    monguito.closeConnection();
-})
 
 describe("test service movie", () =>{
     it("creo una peli y la guardo",async ()=>{
@@ -41,5 +25,16 @@ describe("test service movie", () =>{
         await service.createMovie("the avengers3","imagen url","trailer url");
        let pelis= await service.search('the');
        expect(3).to.equal(pelis.length); 
+    })
+
+    it("agrego 2 comentarios",async ()=>{
+        await service.createMovie("the avengers","imagen url","trailer url");
+        await service.createComment("the avengers","ash10","safa la peli pero no llega al 10")    
+        let peliComentada=await service.commentsOfMovie("the avengers")
+        expect(1).to.equal(peliComentada.comentarios.length)
+        await service.createComment("the avengers","mig10","le doy un 7")    
+         peliComentada=await service.commentsOfMovie("the avengers")
+         expect(2).to.equal(peliComentada.comentarios.length)
+         
     })
 })

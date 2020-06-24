@@ -6,7 +6,11 @@
 ### Install yarn (si no lo tenemos)
 ### cd backend
 ### yarn install
-### yarn test 
+### yarn test (en el backend) (limpia la bd)
+--------------------------
+### yarn run setUp (en el backend) (cargar la bd)
+### yarn start (en el backend) (levantar la api)
+### yarn start (en el frontend) (levantar la pagina)
 
 # Api MovieMoon
  Una api que nos permite buscar peliculas y poder ingresar como usuario del sistema
