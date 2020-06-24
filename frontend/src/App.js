@@ -21,14 +21,16 @@ export default class App extends React.Component{
   setMovie=(movi)=> {this.setState({movie:movi})}
   setUser=(usuario)=>{this.setState({user:usuario})}
   getMovie=()=>this.state.movie;
+
+
 render(){
   return (  
     
      <BrowserRouter>
       <Switch>
           <Route exact path="/" render={props =><Home setMovie={this.setMovie} /> } ></Route>
-          <Route exact path="/player/:video" render={props=><Player getMovie={this.getMovie}/>}></Route>
-          <Route exact path="/login" render={Login}></Route>
+          <Route exact path="/player/:video" render={props=><Player getMovie={this.state.movie} user={this.state.user}/>}></Route>
+          <Route exact path="/login" render={props=><Login userLogeado={this.setUser}/>}></Route>
           <Route exact path="/signIn" render={SignIn}></Route>
           <Route exact path="/addMovies" render={AddMovie}></Route>
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>

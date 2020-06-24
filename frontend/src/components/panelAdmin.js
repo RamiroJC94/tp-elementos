@@ -27,6 +27,7 @@ class PanelAdmin extends React.Component{
              <div style={{textAlign:"center",display: "flex"}}>
                  <Button  variant="primary" onClick={()=>this.props.history.push("/addMovies")}>Agregar Pelicula</Button>
                  <Button  variant="primary" onClick={()=>this.props.history.push("/updateMovies")}>Editar Pelicula</Button>
+                 <Button  variant="danger" onClick={() => this.props.history.push("/")}> Home </Button>
              </div>
 
             </div>)
