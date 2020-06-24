@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ErrorLogin from './errorLogin'
 import api from '../api/api';
-class AddMovie extends React.Component{
+class UpdateMovie extends React.Component{
      constructor(props){
          super(props);
          this.state={
@@ -17,11 +17,11 @@ class AddMovie extends React.Component{
      
      errorLog = (messageError) => <ErrorLogin error={messageError}/>
 
-    enviar=()=>{
-        let body = {titulo: this.state.titulo, imagen: this.state.imagen, trailer: this.state.trailer}
-         api.createMovie(body)
-        .then(data=>{this.props.history.push("/")})
-        .catch(error=>this.setState({checkEnvio:this.errorLog("algo mal anda capo")}))
+    actualizar=()=>{
+        let body = {titulo:this.state.titulo,imagen: this.state.imagen, trailer: this.state.trailer}
+        api.updateMovie(body)
+            .then(data=>{this.props.history.push("/")})
+            .catch(error=>this.setState({checkEnvio:this.errorLog("algo mal anda capo")}))
     }
 
     handleTitulo = (event) =>{
@@ -57,9 +57,9 @@ class AddMovie extends React.Component{
                               value={this.state.trailer} onChange={this.handleTrailer} />
             </Form.Group>
             <div style={{textAlign:"center",display: "block"}}>
-            <Button  variant="primary" onClick={this.enviar}>
-                Agregar Pelicula
-            </Button>
+                <Button  variant="primary" onClick={this.actualizar}>
+                    Editar Pelicula
+                </Button>
                 <Button  variant="secondary" onClick={() => this.props.history.push("/")}>
                     Home
                 </Button>
@@ -70,4 +70,4 @@ class AddMovie extends React.Component{
             </div>)
     }
 }
-export default withRouter(AddMovie)
+export default withRouter(UpdateMovie)

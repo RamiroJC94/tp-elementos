@@ -25,6 +25,13 @@ app.get('/user', async (req,res)=>{
 }       
 );
 
+app.put('/updatePasswordUser', async (req,res) =>{
+    monguito.openConnection();
+    await service.ChangePasswordUser(req.body.username,req.body.password);
+    monguito.closeConnection();
+    res.send("Password Actualizado")
+})
+
 app.post('/users/login',async (req,res)=>{
     console.log(req.body);
     monguito.openConnection();
@@ -63,7 +70,24 @@ app.post(`/addMovies`, async (req, res) => {
     res.send("movie guardado");
 });
 
-
+app.post('/movie/comment',async (req,res)=>{
+    monguito.openConnection();   
+    await serviceMovie.createComment(req.body.titulo,req.body.username,req.body.texto)
+    monguito.closeConnection();
+    res.send("se agrego el comentario con exito")
+}
+)
+app.get('/movie/comments',async (req,res)=>{
+    monguito.openConnection();
+    if(req.query.titulo){
+    const comments= await serviceMovie.commentsOfMovie(req.query.titulo);
+           res.send(comments.comentarios)
+    }
+    else{
+        res.status(404).send("no se envio el titulo de la pelicula")
+    }
+    monguito.closeConnection();
+})
 app.get('/search',async (req,res)=>{
     monguito.openConnection()
     if(req.query.titulo){
@@ -75,17 +99,14 @@ app.get('/search',async (req,res)=>{
     res.send(allpelis);}
     monguito.closeConnection();
 
-})
-app.post(`/addMovies`, async (req, res) => {
-    console.log(req.body);
-
-    monguito.openConnection();
-    await serviceMovie.createMovie(req.body.titulo,req.body.imagen,req.body.trailer);
-    monguito.closeConnection();
-
-    res.send("movie guardado");
 });
 
+app.put(`/updateMovies`, async (req,res) => {
+    monguito.openConnection();
+    await serviceMovie.updateMovie(req.body.titulo,req.body.imagen,req.body.trailer);
+    monguito.closeConnection();
+    res.send("Pelicula Actualizada")
+});
 
 router.route('/movies')
     .get(async function(req,res){

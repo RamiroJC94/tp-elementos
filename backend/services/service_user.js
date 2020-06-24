@@ -26,13 +26,21 @@ export default class ServiceUser{
            
     }
     //si no encuentra a nadie devuelve uno
+
+    async ChangePasswordUser(username,password){
+        User.update({username:username},{password:password},function(err){
+            if(err) return console.error(err);
+        })
+        return "succes"
+    }
+
     async login(username,password){
          const user= await User.findOne({username:username,password:password});
             if(user==null){
                 throw "password o username incorrectos";
             }
             else{
-                console.log(user)
+               
                 return user;
             }
        

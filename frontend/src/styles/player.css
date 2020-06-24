@@ -19,3 +19,18 @@
      color: aliceblue;
      padding: 20px;
  }
+ .comentarios{
+   display: flex;
+ }
+ .cargarComentarios{
+   width: 300px;
+   position: relative;
+   top: -30px;
+ }
+ .centrarMovie{
+   margin-bottom: 0px;
+ }
+.centrarComentarios{
+ position: absolute;
+left: 250px;
+}
