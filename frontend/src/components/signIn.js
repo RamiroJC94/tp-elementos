@@ -15,7 +15,8 @@ class SignIn extends React.Component{
             user: "",
             email:"",
             isAdmin: false,
-            password:""
+            password:"",
+            setUser:props.setUser
         }
     }
 
@@ -35,7 +36,8 @@ handlerCheckbox=()=>{
 signIn=()=>{
     const body={mail:this.state.email,username:this.state.user,password:this.state.password,idAdmin:this.state.isAdmin}
     api.signIn(body)
-   .then(data => this.props.history.push("/"))
+   .then(data => {
+       this.state.setUser(data);this.props.history.push("/")})
    .catch(error=>console.log(error))
 }
     render(){

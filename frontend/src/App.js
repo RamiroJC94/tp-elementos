@@ -31,7 +31,7 @@ render(){
           <Route exact path="/" render={props =><Home setMovie={this.setMovie} user={this.state.user} setUser={this.setUser} /> } ></Route>
           <Route exact path="/player/:video" render={props=><Player getMovie={this.state.movie} user={this.state.user} setUser={this.setUser}/>}></Route>
           <Route exact path="/login" render={props=><Login userLogeado={this.setUser}/>}></Route>
-          <Route exact path="/signIn" render={SignIn}></Route>
+          <Route exact path="/signIn" render={props=><SignIn setUser={this.setUser}></SignIn>}></Route>
           <Route exact path="/addMovies" render={AddMovie}></Route>
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>
           <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
