@@ -28,7 +28,11 @@ export default class NavBarPlayer extends React.Component{
       <Navbar.Collapse className="justify-content-end">
       <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>
       {this.state.userLogeado!=null ?  (
-      <Navbar.Brand> <Link to="/"  onClick={()=>{this.state.setUser(null)}}>Logout</Link>
+      <Navbar.Brand>
+        {this.state.userLogeado.isAdmin ? 
+        <Link to="/panelAdmin">PanelAdmin</Link> : null } 
+        {" "}
+        <Link to="/"  onClick={()=>{this.state.setUser(null)}}>Logout</Link>
        {" "}
       <Navbar.Text>
           Signed in as: {this.state.userLogeado.username}

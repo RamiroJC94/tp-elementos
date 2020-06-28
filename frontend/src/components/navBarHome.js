@@ -50,7 +50,11 @@ render(){
     <Navbar.Brand> <Link to="/signIn">Sing In</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>
    
-    {this.state.userLogeado!=null ?  (<Navbar.Brand> <Link onClick={()=>{this.state.setU(null)
+    {this.state.userLogeado!=null ?  (<Navbar.Brand> 
+      {this.state.userLogeado.isAdmin ? 
+        <Link to="/panelAdmin">PanelAdmin</Link> : null }
+    {" "} 
+    <Link onClick={()=>{this.state.setU(null)
     window.location.reload(true);
     }}>Logout</Link>
     {" "}
