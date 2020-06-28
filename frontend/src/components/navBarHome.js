@@ -15,7 +15,10 @@ export default  class NavBarHome extends React.Component
          this.state={
            changePelis:props.search,
            input:"",
-           busqueda:[]
+           busqueda:[],
+           userLogeado:props.userL,
+           setU:props.setU,
+           home:props.setHome
          }
      }
       setInput=(event)=>{this.setState({input:event.target.value.trim()})}
@@ -46,6 +49,14 @@ render(){
     <Navbar.Brand> <Link to="/profile">Profile</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/signIn">Sing In</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>
+   
+    {this.state.userLogeado!=null ?  (<Navbar.Brand> <Link onClick={()=>{this.state.setU(null)
+    window.location.reload(true);
+    }}>Logout</Link>
+    {" "}
+    <Navbar.Text>
+      Signed in as: {this.state.userLogeado.username}
+    </Navbar.Text></Navbar.Brand>):  null}
     </Navbar.Collapse>
   </Navbar> 
   

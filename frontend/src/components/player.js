@@ -20,7 +20,8 @@ class Player extends React.Component {
       botonComentario: true,
       error:false,
       comentarios:[],
-      input:""
+      input:"",
+      setUser:props.setUser
     }
 
   }
@@ -76,7 +77,7 @@ class Player extends React.Component {
   render() {
 
     return (<div>{this.state.peli == null ? <div></div> : <div>
-      <NavBarPlayer></NavBarPlayer>
+      <NavBarPlayer userL={this.state.userL} setUser={this.state.setUser}></NavBarPlayer>
       <div >
         <div className="movie">
           <h1>{this.state.peli.titulo}</h1>
