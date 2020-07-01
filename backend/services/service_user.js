@@ -34,6 +34,8 @@ export default class ServiceUser{
         return "succes"
     }
 
+    
+
     async login(username,password){
          const user= await User.findOne({username:username,password:password});
             if(user==null){
