@@ -35,7 +35,7 @@ render(){
           <Route exact path="/addMovies" render={AddMovie}></Route>
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>
           <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
-          <Route exact path="/profile" render={Profile}></Route>
+          <Route exact path="/profile" render={props=><Profile user={this.state.user}/>}></Route>
       </Switch>
        </BrowserRouter>
        );

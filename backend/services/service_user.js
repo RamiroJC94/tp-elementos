@@ -34,6 +34,12 @@ export default class ServiceUser{
         return "succes"
     }
 
+    async updateData(username,email,password,userLogeado){
+        User.update({username:userLogeado},{password:password,username:username,mail:email},function(err){
+            if(err) return console.error(err);
+        })
+    }
+
     async login(username,password){
          const user= await User.findOne({username:username,password:password});
             if(user==null){

@@ -108,6 +108,14 @@ app.put(`/updateMovies`, async (req,res) => {
     res.send("Pelicula Actualizada")
 });
 
+app.put(`/updateData` , async(req,res) => {
+    console.log(req.body)
+    monguito.openConnection();
+    await  service.updateData(req.body.username,req.body.mail,req.body.password,req.body.userLogeado);
+    monguito.closeConnection();
+    res.send("User Actualizado");
+});
+
 router.route('/movies')
     .get(async function(req,res){
         monguito.openConnection();
