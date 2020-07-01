@@ -10,7 +10,8 @@ class Home extends React.Component{
       this.state={
         movies:[],
         set:props.setMovie,
-        pelisBuscadas:[]
+        pelisBuscadas:[],
+        userLogeado:props.user
       }
     }
   resultSearch=(pelis)=>this.setState({pelisBuscadas:pelis})
@@ -25,7 +26,7 @@ class Home extends React.Component{
   }
    render(){
        let data=this.state.movies;
-       let pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set}/>);
+       let pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set} user={this.state.userLogeado}/>);
        return (
          <div >
            <NavBarHome search={this.resultSearch}></NavBarHome>

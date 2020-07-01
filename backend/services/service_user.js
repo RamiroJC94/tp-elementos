@@ -34,11 +34,11 @@ export default class ServiceUser{
         return "succes"
     }
 
-    async ChangeHistoryMovie(username, titulo, urlImg, urlTrailer){
+    async ChangeHistoryMovie(username, titulo, imagen, trailer){
         const movie = new Movie({
             titulo:titulo,
-            urlImg:urlImg,
-            urlTrailer:urlTrailer,
+            imagen:imagen,
+            trailer:trailer
         })
 
         User.findOneAndUpdate({username:username},{$push:{history:movie}},function(err){

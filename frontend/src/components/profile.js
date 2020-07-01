@@ -38,7 +38,7 @@ class Profile extends React.Component{
         const body={username:this.state.username,password:this.state.password}
         api.changePasswordUser(body)
        .then(data=>{this.props.history.push("/")})
-       .catch(error=>this.setState({checkEnvio:this.errorLog("error in ChangePasswordUser")}))
+       .catch(error => console.log(error))
     }
     
     render(){
