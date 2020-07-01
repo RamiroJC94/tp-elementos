@@ -18,8 +18,19 @@ export default class Movie extends React.Component{
             this.state.setM(this.state.peli)
         }else{
             let body = {username: this.state.userLogeado.username, titulo: this.state.peli.titulo, imagen: this.state.peli.imagen, trailer: this.state.peli.trailer}
-            console.log(body)
+            
+            console.log('................ Peli Antes')
+            console.log(this.state.peli)
+
             this.state.setM(this.state.peli)
+
+            console.log('................ Peli')
+            console.log(this.state.peli)
+            console.log('................ Body')
+            console.log(body)
+            console.log('................ SetM')
+            console.log(this.state.setM)
+
             api.changeHistoryMovie(body)
             .then(data=>{console.log(data)})
             .catch(error => console.log(error))

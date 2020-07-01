@@ -1,4 +1,4 @@
-import {User } from '../mongoose/user'
+import {User,History} from '../mongoose/user'
 
 export default class ServiceUser{
     constructor(){
@@ -35,7 +35,7 @@ export default class ServiceUser{
     }
 
     async ChangeHistoryMovie(username, titulo, imagen, trailer){
-        const movie = new Movie({
+        const movie = new History({
             titulo:titulo,
             imagen:imagen,
             trailer:trailer
@@ -44,7 +44,7 @@ export default class ServiceUser{
         User.findOneAndUpdate({username:username},{$push:{history:movie}},function(err){
             if(err) return console.error(err);
         })
-        return "ChangeHistoryMovie succes"
+        return "ChangeHistoryMovie service succes"
     }
 
     async login(username,password){
