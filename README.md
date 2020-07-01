@@ -11,7 +11,7 @@
 ### yarn run setUp (en el backend) (cargar la bd)
 ### yarn start (en el backend) (levantar la api)
 ### yarn start (en el frontend) (levantar la pagina)
-
+[Backlog hecho en Trello](https://trello.com/b/O7zFi1hu/backlog)
 # Api MovieMoon
  Una api que nos permite buscar peliculas y poder ingresar como usuario del sistema
 
