@@ -35,10 +35,16 @@ export default class ServiceUser{
     }
 
     async ChangeHistoryMovie(username, titulo, urlImg, urlTrailer){
-        User.update({username:username},{password:password},function(err){
+        const movie = new Movie({
+            titulo:titulo,
+            urlImg:urlImg,
+            urlTrailer:urlTrailer,
+        })
+        
+        User.findOneAndUpdate({username:username},{$push:{pelicula:movie}},function(err){
             if(err) return console.error(err);
         })
-        return "succes"
+        return "ChangeHistoryMovie succes"
     }
 
     async login(username,password){
