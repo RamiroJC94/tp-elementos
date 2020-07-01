@@ -48,6 +48,14 @@ app.post('/users/login',async (req,res)=>{
 
 });
 
+app.post('/user/AddHistory', async (req, res) => {
+    monguito.openConnection();
+    await service.ChangeHistoryMovie(req.body.username, req.body.titulo, req.body.imagen, req.body.trailer);
+    monguito.closeConnection();
+    console.log('ChangeHistory success')
+    res.send('ChangeHistory success');
+})
+
 app.post('/user',async  (req, res) => {
     console.log(req.body);
 

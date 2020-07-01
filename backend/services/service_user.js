@@ -40,8 +40,8 @@ export default class ServiceUser{
             urlImg:urlImg,
             urlTrailer:urlTrailer,
         })
-        
-        User.findOneAndUpdate({username:username},{$push:{pelicula:movie}},function(err){
+
+        User.findOneAndUpdate({username:username},{$push:{history:movie}},function(err){
             if(err) return console.error(err);
         })
         return "ChangeHistoryMovie succes"

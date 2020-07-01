@@ -10,7 +10,7 @@ let UserSchema= new mongoose.Schema({
     username: {type:String},     
     password: {type:String},
     isAdmin: {type:Boolean},
-    History: {type:[HistorySchema]},
+    history: {type:[HistorySchema]},
     });
 
 export var User = mongoose.model('User',UserSchema);         
