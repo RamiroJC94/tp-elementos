@@ -34,7 +34,12 @@ export default class ServiceUser{
         return "succes"
     }
 
-    
+    async ChangeHistoryMovie(username, titulo, urlImg, urlTrailer){
+        User.update({username:username},{password:password},function(err){
+            if(err) return console.error(err);
+        })
+        return "succes"
+    }
 
     async login(username,password){
          const user= await User.findOne({username:username,password:password});
