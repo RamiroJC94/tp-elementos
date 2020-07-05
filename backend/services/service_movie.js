@@ -83,7 +83,7 @@ export default class ServiceMovie{
             if (err) return console.error(err);
         })
     }
-}
+
       async getMovie(title){
            const movie = await Movie.findOne({titulo:title})
            return movie
