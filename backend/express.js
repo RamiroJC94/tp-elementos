@@ -32,6 +32,14 @@ app.put('/updatePasswordUser', async (req,res) =>{
     res.send("Password Actualizado")
 })
 
+app.post('/addFav', async (req,res)=>{
+    monguito.openConnection();
+    let movie = await serviceMovie.getMovie(req.body.title);
+    await service.addToFav(req.body.username,movie);
+    res.status(204)
+    res.send("Add to fav");
+})
+
 app.post('/users/login',async (req,res)=>{
     console.log(req.body);
     monguito.openConnection();
