@@ -13,4 +13,5 @@ let MovieSchema = new mongoose.Schema({
                   });
 
 export let Movie=mongoose.model('Movie',MovieSchema);   
-export let Comment=mongoose.model('Comment',CommentSchema);                 
+export let Comment=mongoose.model('Comment',CommentSchema);    
+export {MovieSchema};             
