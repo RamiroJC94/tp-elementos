@@ -12,7 +12,7 @@ export default class ServiceUser{
            username: username,
            password: password,
            isAdmin:admin,
-           
+           favorites:[]
         }); 
         await userToCreate.save();   
        return "save user succesfully";
@@ -44,6 +44,13 @@ export default class ServiceUser{
                 return user;
             }
        
+    }
+
+    async addToFav(username,movie){
+        await User.update({username:username},{$push:{favorites:movie}},function(err){
+            if(err) return console.log(err)
+        })
+        return "sucess"
     }
 
 
