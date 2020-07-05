@@ -78,4 +78,9 @@ export default class ServiceMovie{
            return comments;
         }
 
-} 
+    async deleteMovie(titulo) {
+        Movie.deleteOne({titulo:titulo},function (err) {
+            if (err) return console.error(err);
+        })
+    }
+}

@@ -23,7 +23,8 @@ const api ={
     getComments:(title)=>request('get','/movie/comments/?titulo='+title),
     searchUser:(body)=>request('get','/user',body),
     changePasswordUser:(body)=> request('put','/updatePasswordUser',body),
-    changeData:(body)=> request('put', '/updateData', body)
+    changeData:(body)=> request('put', '/updateData', body),
+    deleteMovie:(body)=> request("delete",'/deleteMovie',body)
 }
 
 export default api;

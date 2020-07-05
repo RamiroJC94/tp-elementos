@@ -116,6 +116,13 @@ app.put(`/updateData` , async(req,res) => {
     res.send("User Actualizado");
 });
 
+app.delete('/deleteMovie', async(req,res) =>{
+    monguito.openConnection();
+    await  serviceMovie.deleteMovie(req.body.titulo);
+    monguito.closeConnection();
+    res.send("Movie eliminada");
+})
+
 router.route('/movies')
     .get(async function(req,res){
         monguito.openConnection();

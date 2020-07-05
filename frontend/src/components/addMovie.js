@@ -42,21 +42,21 @@ class AddMovie extends React.Component{
         <Form >
         {this.state.checkLogin} 
              <Form.Group >
-                <Form.Label>Titulo</Form.Label>
+                <Form.Label style={{color: "aqua"}}>Titulo</Form.Label>
                 <Form.Control placeholder="Ingresar Titulo"
                  value={this.state.titulo} onChange={this.handleTitulo}  />
             </Form.Group>
             <Form.Group >
-                <Form.Label>Imagen</Form.Label>
+                <Form.Label style={{color: "aqua"}}>Imagen</Form.Label>
                 <Form.Control placeholder="Ingresar Url de la Imagen"
                 value={this.state.imagen} onChange={this.handleImagen} />
             </Form.Group>
             <Form.Group >
-                <Form.Label>Trailer</Form.Label>
+                <Form.Label style={{color: "aqua"}}>Trailer</Form.Label>
                 <Form.Control placeholder="Ingresar Url de la Trailer"
                               value={this.state.trailer} onChange={this.handleTrailer} />
             </Form.Group>
-            <div style={{textAlign:"center",display: "block"}}>
+            <div style={{textAlign:"center",display: "flex"}}>
             <Button  variant="primary" onClick={this.enviar}>
                 Agregar Pelicula
             </Button>
