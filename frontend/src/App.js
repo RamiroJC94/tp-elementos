@@ -9,6 +9,7 @@ import AddMovie from "./components/addMovie";
 import Profile from "./components/profile";
 import UpdateMovie from "./components/updateMovie";
 import PanelAdmin from "./components/panelAdmin";
+import DeleteMovie from "./components/deleteMovie";
 
 export default class App extends React.Component{
   constructor(props){
@@ -36,6 +37,7 @@ render(){
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>
           <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
           <Route exact path="/profile" render={props=><Profile user={this.state.user}/>}></Route>
+          <Route exact path="/deleteMovies" render={DeleteMovie}></Route>
       </Switch>
        </BrowserRouter>
        );

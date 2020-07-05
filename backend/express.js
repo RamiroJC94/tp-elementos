@@ -32,6 +32,14 @@ app.put('/updatePasswordUser', async (req,res) =>{
     res.send("Password Actualizado")
 })
 
+app.post('/addFav', async (req,res)=>{
+    monguito.openConnection();
+    let movie = await serviceMovie.getMovie(req.body.title);
+    await service.addToFav(req.body.username,movie);
+    res.status(204)
+    res.send("Add to fav");
+})
+
 app.post('/users/login',async (req,res)=>{
     console.log(req.body);
     monguito.openConnection();
@@ -115,6 +123,13 @@ app.put(`/updateData` , async(req,res) => {
     monguito.closeConnection();
     res.send("User Actualizado");
 });
+
+app.delete('/deleteMovie', async(req,res) =>{
+    monguito.openConnection();
+    await  serviceMovie.deleteMovie(req.body.titulo);
+    monguito.closeConnection();
+    res.send("Movie eliminada");
+})
 
 router.route('/movies')
     .get(async function(req,res){
