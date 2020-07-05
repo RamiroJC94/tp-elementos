@@ -78,4 +78,9 @@ export default class ServiceMovie{
            return comments;
         }
 
+      async getMovie(title){
+           const movie = await Movie.findOne({titulo:title})
+           return movie
+      }
+
 } 
