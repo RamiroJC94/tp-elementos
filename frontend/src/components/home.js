@@ -28,13 +28,12 @@ class Home extends React.Component{
        let data=this.state.movies;
        let pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set} user={this.state.userLogeado}/>);
        return (
-         <div >
+          <div >
            <NavBarHome search={this.resultSearch}></NavBarHome>
-           <div className="elementos">
-          {this.state.pelisBuscadas.length===0 ? pelis : this.state.pelisBuscadas}
-
-           </div>
-         </div>
+            <div className="elementos">
+              {this.state.pelisBuscadas.length===0 ? pelis : this.state.pelisBuscadas}
+            </div>
+          </div>
        );
    }
 }
