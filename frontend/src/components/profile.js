@@ -15,20 +15,22 @@ class Profile extends React.Component{
             isAdmin: "",
             FormProfileIsVisible: "visible",
             historialIsVisible:"hidden",
-            movies:[],
-            pelisBuscadas:[],
+            historyMovies:[],
+            historyProfile:[],
             set:props.setMovie,
             userLogeado:props.user
         }
     }
 
     componentDidMount(){ 
-    if(this.state.pelisBuscadas.length===0){
-        api.getMovies()
-        .then(data => {this.setState({movies:data})})
+    if(this.state.historyProfile.length===0){
+        api.getHistoryMovie()
+        .then(data => {this.setState({historyMovies:data})})
         .catch(error => console.log(error))
         }
     }
+
+    SearchHistoryMovie=(pelis)=>this.setState({historyProfile:pelis})
 
     handleUser = (event) =>{
         this.setState({username:event.target.value.trim()})
@@ -54,13 +56,13 @@ class Profile extends React.Component{
     } 
 
     handlerGetHistory = () => {
-        const data=this.state.movies
+        const data=this.state.historyMovies
         const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set}/>);
         return(
             <div >
                 <NavBarHome search={this.resultSearch}></NavBarHome>
                 <div className="elementos">
-                    {this.state.pelisBuscadas.length===0 ? pelis : this.state.pelisBuscadas}
+                    {this.state.historyProfile.length===0 ? pelis : this.state.historyProfile}
                 </div>
             </div>
         )
@@ -122,7 +124,7 @@ class Profile extends React.Component{
                     <div>
                         <NavBarHome search={this.resultSearch}></NavBarHome>
                         <div className="elementos">
-                            {this.state.pelisBuscadas.length===0 ? pelis : this.state.pelisBuscadas}
+                            {this.state.historyProfile.length===0 ? pelis : this.state.historyProfile}
                         </div>
                     </div>
                 </div>
