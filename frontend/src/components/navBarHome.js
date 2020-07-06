@@ -46,7 +46,6 @@ render(){
       <Button variant="outline-info" onClick={this.executeSearch}>Search</Button>
     </Form>
     <Navbar.Collapse className="justify-content-end">
-    <Navbar.Brand> <Link to="/profile">Profile</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/signIn">Sing In</Link></Navbar.Brand>
     <Navbar.Brand> <Link to="/login">Login</Link></Navbar.Brand>
    
@@ -54,6 +53,8 @@ render(){
       {this.state.userLogeado.isAdmin ? 
         <Link to="/panelAdmin">PanelAdmin</Link> : null }
     {" "} 
+    <Link to="/profile">Profile</Link>
+    {" "}
     <Link onClick={()=>{this.state.setU(null)
     window.location.reload(true);
     }}>Logout</Link>
