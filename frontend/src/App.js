@@ -15,13 +15,15 @@ export default class App extends React.Component{
     super(props)
     this.state={
       movie:"nada",
-      user:null
+      user:null,
+      historyProfileMovie:[]
     }
   } 
   setMovie=(movi)=> {this.setState({movie:movi})}
   setUser=(usuario)=>{this.setState({user:usuario})}
   getMovie=()=>this.state.movie;
-
+  setHistoryProfileMovie=(history)=>{this.sertState({historyProfileMovie:history})}
+  getHistoryProfileMovie=()=>this.state.historyProfileMovie
 
 render(){
   return (  

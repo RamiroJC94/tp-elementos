@@ -15,22 +15,22 @@ class Profile extends React.Component{
             isAdmin: "",
             FormProfileIsVisible: "visible",
             historialIsVisible:"hidden",
-            historyMovies:[],
-            historyProfile:[],
+            historyProfileMovies:[],
+            searchHistoryProfM:[],
             set:props.setMovie,
             userLogeado:props.user
         }
     }
 
     componentDidMount(){ 
-    if(this.state.historyProfile.length===0){
+    if(this.state.searchHistoryProfM.length===0){
         api.getHistoryMovie()
-        .then(data => {this.setState({historyMovies:data})})
+        .then(data => {this.setState({historyProfileMovies:data})})
         .catch(error => console.log(error))
         }
     }
 
-    SearchHistoryMovie=(pelis)=>this.setState({historyProfile:pelis})
+    SearchHistoryMovie=(pelis)=>this.setState({searchHistoryProfM:pelis})
 
     handleUser = (event) =>{
         this.setState({username:event.target.value.trim()})
@@ -56,13 +56,13 @@ class Profile extends React.Component{
     } 
 
     handlerGetHistory = () => {
-        const data=this.state.historyMovies
+        const data=this.state.historyProfileMovies
         const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set}/>);
         return(
             <div >
                 <NavBarHome search={this.resultSearch}></NavBarHome>
                 <div className="elementos">
-                    {this.state.historyProfile.length===0 ? pelis : this.state.historyProfile}
+                    {this.state.searchHistoryProfM.length===0 ? pelis : this.state.searchHistoryProfM}
                 </div>
             </div>
         )
@@ -124,7 +124,7 @@ class Profile extends React.Component{
                     <div>
                         <NavBarHome search={this.resultSearch}></NavBarHome>
                         <div className="elementos">
-                            {this.state.historyProfile.length===0 ? pelis : this.state.historyProfile}
+                            {this.state.searchHistoryProfM.length===0 ? pelis : this.state.searchHistoryProfM}
                         </div>
                     </div>
                 </div>
