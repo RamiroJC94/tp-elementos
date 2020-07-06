@@ -17,7 +17,7 @@ class Profile extends React.Component{
             historialIsVisible:"hidden",
             historyProfileMovies:[],
             searchHistoryProfM:[],
-            set:props.setMovie,
+            setHPM:props.setHistoryProfileMovie,
             userLogeado:props.user
         }
     }
@@ -57,7 +57,7 @@ class Profile extends React.Component{
 
     handlerGetHistory = () => {
         const data=this.state.historyProfileMovies
-        const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set}/>);
+        const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setHistory={this.state.setHPM}/>);
         return(
             <div >
                 <NavBarHome search={this.resultSearch}></NavBarHome>
