@@ -52,7 +52,7 @@ export default class ServiceUser{
             return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer}
         })
         return history; 
-        }    
+    }    
 
     async login(username,password){
          const user= await User.findOne({username:username,password:password});

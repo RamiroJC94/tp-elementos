@@ -57,6 +57,14 @@ app.post('/user/AddHistory', async (req, res) => {
     res.send('ChangeHistory express success');
 })
 
+app.get('/user/GetHistory',async (req,res)=>{
+    monguito.openConnection()
+    const history=await service.getHistoryMovie();
+    monguito.closeConnection()
+    res.send(history);
+    console.log('GetHistory express success')
+})
+
 app.post('/user',async  (req, res) => {
     console.log(req.body);
 
