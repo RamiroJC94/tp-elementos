@@ -40,12 +40,19 @@ export default class ServiceUser{
             imagen:imagen,
             trailer:trailer
         })
-
         User.findOneAndUpdate({username:username},{$push:{history:movie}},function(err){
             if(err) return console.error(err);
         })
         return "ChangeHistoryMovie service succes"
     }
+
+    async getHistoryMovie(){
+        let result=await History.find();
+        let history=result.map(movie => {
+            return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer}
+        })
+        return history; 
+        }    
 
     async login(username,password){
          const user= await User.findOne({username:username,password:password});
