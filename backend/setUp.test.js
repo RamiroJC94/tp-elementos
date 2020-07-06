@@ -50,6 +50,11 @@ await service.createMovie("La colina de las amapolas","https://cdn.hobbyconsolas
 
 await serviceUser.createUser("ash@gmail.com","ash10","123",true);
 await serviceUser.createUser("a@gmail.com","a","1234",false);
+
+await serviceUser.createUser("ash@gmail.com","admin","123",true);
+await serviceUser.createUser("a@gmail.com","user","123",false);
+
+
 })
     })
 

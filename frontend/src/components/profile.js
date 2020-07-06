@@ -2,8 +2,10 @@ import React from 'react'
 import {withRouter}from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import NavBarHome from './navBarHome'
 
 import api from '../api/api';
+import Movie from './movie.js'
 
 class Profile extends React.Component{
     constructor(props){
@@ -55,19 +57,6 @@ class Profile extends React.Component{
         this.setState({historialIsVisible:(f==='visible' ? 'hidden': 'visible')})
     } 
 
-    handlerGetHistory = () => {
-        const data=this.state.historyProfileMovies
-        const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setHistory={this.state.setHPM}/>);
-        return(
-            <div >
-                <NavBarHome search={this.resultSearch}></NavBarHome>
-                <div className="elementos">
-                    {this.state.searchHistoryProfM.length===0 ? pelis : this.state.searchHistoryProfM}
-                </div>
-            </div>
-        )
-    }
-
     ChangePasswordUser=()=>{
         const body={username:this.state.username,password:this.state.password}
         api.changePasswordUser(body)
@@ -76,6 +65,8 @@ class Profile extends React.Component{
     }
 
     render(){
+        const data=this.state.historyProfileMovies
+        const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setHistory={this.state.setHPM}/>);
         return(
             <div className="centrarForm" style={{display: "flex", flexDirection:"row"}}>
                 <div style={{width:"15vw", paddingRight:"1vw", alignContent:"center",alignItems:"center", display:"flex", flexDirection:"column", justifyContent:"center"}}>
@@ -122,7 +113,7 @@ class Profile extends React.Component{
 
                 <div id="History" style={{flexDirection:"column", width:"50vw", visibility:this.state.historialIsVisible}}>
                     <div>
-                        <NavBarHome search={this.resultSearch}></NavBarHome>
+                        {/* <NavBarHome search={this.SearchHistoryMovie}></NavBarHome> */}
                         <div className="elementos">
                             {this.state.searchHistoryProfM.length===0 ? pelis : this.state.searchHistoryProfM}
                         </div>
