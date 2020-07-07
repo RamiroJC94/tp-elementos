@@ -46,12 +46,14 @@ export default class ServiceUser{
         return "ChangeHistoryMovie service succes"
     }
 
-    async getHistoryMovie(){
-        let result=await History.find();
+    async getHistoryMovie(username){
+
+        const userFinded = await User.findOne({username:username});
+        let result= userFinded.history
         let history=result.map(movie => {
             return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer}
         })
-        return history; 
+        return history;
     }    
 
     async login(username,password){

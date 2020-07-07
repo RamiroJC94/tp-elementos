@@ -2,7 +2,7 @@ import React from 'react'
 import {withRouter}from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import NavBarHome from './navBarHome'
+// import NavBarHome from './navBarHome'
 
 import api from '../api/api';
 import Movie from './movie.js'
@@ -20,15 +20,27 @@ class Profile extends React.Component{
             historyProfileMovies:[],
             searchHistoryProfM:[],
             setHPM:props.setHistoryProfileMovie,
-            userLogeado:props.user
+            userLogeado:props.userLogeado
         }
     }
 
-    componentDidMount(){ 
-    if(this.state.searchHistoryProfM.length===0){
-        api.getHistoryMovie()
-        .then(data => {this.setState({historyProfileMovies:data})})
-        .catch(error => console.log(error))
+    componentDidMount(){
+        if (this.state.userLogeado == null){
+            console.log('User No Login')
+        }else{
+            // console.log(this.state.userLogeado.username)
+            let body = {username:this.state.userLogeado.username}
+            if(this.state.searchHistoryProfM.length===0){
+                console.log('************************************')
+                console.log('username : '+this.state.userLogeado.username)
+                console.log('body : '+body)
+                console.log('body.username : '+body.username)
+                console.log('************************************')
+                api.getHistoryMovie(body)
+                .then(data=>{console.log(data)})
+                // .then(data => {this.setState({historyProfileMovies:data})})
+                .catch(error => console.log(error))
+                }
         }
     }
 
@@ -82,7 +94,7 @@ class Profile extends React.Component{
                         {/* onClick={this.handlerChangeStatusVisible(document.getElementById("FormEditProfile"))  */}
 
                         <Form.Group controlId="formEditHistorial">
-                            <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleHistorial} variant="primary">Edit Historial</Button>
+                            <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleHistorial} variant="primary">View Historial</Button>
                         </Form.Group>
                         {/* onClick={this.handlerChangeStatusVisible(document.getElementById("FormEditProfile"))  */}
                     
