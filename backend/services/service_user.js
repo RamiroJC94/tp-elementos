@@ -47,8 +47,9 @@ export default class ServiceUser{
     }
 
     async getHistoryMovie(username){
-
+        console.log('username :: '+username)
         const userFinded = await User.findOne({username:username});
+        console.log('SearchUser :: '+userFinded)
         let result= userFinded.history
         let history=result.map(movie => {
             return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer}

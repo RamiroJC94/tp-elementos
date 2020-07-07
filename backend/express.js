@@ -33,7 +33,8 @@ app.put('/updatePasswordUser', async (req,res) =>{
 })
 
 app.post('/users/login',async (req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
+
     monguito.openConnection();
     try{
         let user = await service.login(req.body.username,req.body.password);
@@ -57,7 +58,7 @@ app.post('/user/AddHistory', async (req, res) => {
     res.send('ChangeHistory express success');
 })
 
-app.get('/user/GetHistory',async (req,res)=>{
+app.get('/user/getHistory',async (req,res)=>{
     console.log('************************************')
     console.log('req : '+req)
     console.log('req.body : '+req.body)

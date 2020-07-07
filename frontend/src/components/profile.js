@@ -2,9 +2,8 @@ import React from 'react'
 import {withRouter}from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import NavBarHome from './navBarHome'
 
-import api from '../api/api';
+import api from '../api/api'
 import Movie from './movie.js'
 
 class Profile extends React.Component{
@@ -28,7 +27,7 @@ class Profile extends React.Component{
         if (this.state.userLogeado == null){
             console.log('User No Login')
         }else{
-            // console.log(this.state.userLogeado.username)
+            console.log(this.state.userLogeado.username)
             let body = {username:this.state.userLogeado.username}
             if(this.state.searchHistoryProfM.length===0){
                 console.log('************************************')
@@ -36,11 +35,17 @@ class Profile extends React.Component{
                 console.log('body : '+body)
                 console.log('body.username : '+body.username)
                 console.log('************************************')
+                
                 api.getHistoryMovie(body)
-                .then(data=>{console.log(data)})
-                // .then(data => {this.setState({historyProfileMovies:data})})
+                .then(data => {this.setState({historyProfileMovies:data})})
                 .catch(error => console.log(error))
-                }
+
+                console.log('************************************')
+                console.log('username : '+this.state.userLogeado.username)
+                console.log('body : '+body)
+                console.log('body.username : '+body.username)
+                console.log('************************************')                
+            }
         }
     }
 
