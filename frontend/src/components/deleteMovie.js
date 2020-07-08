@@ -5,23 +5,31 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import ErrorLogin from './errorLogin'
 import api from '../api/api';
+import  '../styles/movie.css'
 class DeleteMovie extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            titulo:""
+            pelis:[]
         }
     }
 
     errorLog = (messageError) => <ErrorLogin error={messageError}/>
 
-    delete=()=>{
-        let body = {titulo:this.state.titulo}
+    delete=(title)=>{
+        if(window.confirm("Esta seguro que desea eliminar la peli")){
+        let body = {titulo:title};
         api.deleteMovie(body)
             .then(data=>{this.props.history.push("/")})
             .catch(error=>this.setState({checkEnvio:this.errorLog("algo mal anda capo")}))
+        }
     }
-
+    componentDidMount(){
+        api.getMovies().
+        then(data=>{
+            const movies= data.map(p=><MovieToDelete src={p.imagen} remove={this.delete} titulo={p.titulo} />) 
+            this.setState({pelis:movies})});
+    }
     handleTitulo = (event) =>{
         this.setState({titulo:event.target.value})
     }
@@ -30,26 +38,13 @@ class DeleteMovie extends React.Component{
         return(
             <div >
                 <h1 className="titul">MovieMoon - Delete Movie</h1>
-                <div className="formulario">
-                    <Form >
-                        {this.state.checkLogin}
-                        <Form.Group >
-                            <Form.Label style={{color: "aqua"}} >Titulo</Form.Label>
-                            <Form.Control placeholder="Ingresar Titulo"
-                                          value={this.state.titulo} onChange={this.handleTitulo}  />
-                        </Form.Group>
-                        <div style={{textAlign:"center",display: "flex"}}>
-                            <Button  variant="primary" onClick={this.delete}>
-                                Eliminar Pelicula
-                            </Button>
-                            <Button  variant="secondary" onClick={() => this.props.history.push("/")}>
-                                Home
-                            </Button>
-
-                        </div>
-                    </Form>
-                </div>
-            </div>)
+                <div className="elementos">{this.state.pelis}</div>
+           </div>)
     }
+}
+function MovieToDelete(props){
+    return (
+      <img src={props.src} onClick={()=>{props.remove(props.titulo)}}className="movie"></img>  
+    )
 }
 export default withRouter(DeleteMovie)
