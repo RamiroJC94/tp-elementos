@@ -79,9 +79,7 @@ class Profile extends React.Component{
                             <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleFormProfile} variant="primary">Edit Profile</Button>
                         </Form.Group>
 
-                        <Form.Group controlId="formEditFavorites">
-                            <Button  id="HiddenShow" variant="primary">Edit Favorites</Button>
-                        </Form.Group>
+
 
                         <Form.Group controlId="formEditHistorial">
                             <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleHistorial} variant="primary">View Historial</Button>
