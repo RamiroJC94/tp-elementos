@@ -24,7 +24,9 @@ const api ={
     searchUser:(body)=>request('get','/user',body),
     changePasswordUser:(body)=> request('put','/updatePasswordUser',body),
     changeData:(body)=> request('put', '/updateData', body),
-    deleteMovie:(body)=> request("delete",'/deleteMovie',body)
+    deleteMovie:(body)=> request("delete",'/deleteMovie',body),
+    favorites:(body)=> request('get','/favorites',body),
+    addToFav:(body)=> request('post','/addFav',body)
 }
 
 export default api;
