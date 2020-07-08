@@ -32,6 +32,19 @@ app.put('/updatePasswordUser', async (req,res) =>{
     res.send("Password Actualizado")
 })
 
+app.get('/favorites',async (req,res)=>{
+   try{ 
+    monguito.openConnection();
+    let favorites = await service.favorites(req.body.username)
+    monguito.closeConnection()
+    res.status(200)
+    res.send(favorites)
+   }catch(error){
+       console.log(error)
+       res.status(404)
+   } 
+})
+
 app.post('/addFav', async (req,res)=>{
     monguito.openConnection();
     let movie = await serviceMovie.getMovie(req.body.title);
