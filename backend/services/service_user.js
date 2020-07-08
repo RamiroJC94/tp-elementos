@@ -59,5 +59,13 @@ export default class ServiceUser{
         return "sucess"
     }
 
+    async favorites(username){
+        const userFinded = await User.findOne({username:username});
+
+        const favorites = userFinded.favorites
+        console.log(favorites)
+        return favorites
+    }
+
 
 }
