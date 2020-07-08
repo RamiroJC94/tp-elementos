@@ -27,6 +27,9 @@ const api ={
     deleteMovie:(body)=> request("delete",'/deleteMovie',body),
     favorites:(body)=> request('get','/favorites',body),
     addToFav:(body)=> request('post','/addFav',body)
+    changeHistoryMovie:(body)=> request('post','/user/AddHistory', body),
+    // getHistoryMovie:(body)=> request('get','/user/getHistory', body),
+    getHistoryMovie:(username)=> request('get','/user/getHistory/?username='+username)
 }
 
 export default api;

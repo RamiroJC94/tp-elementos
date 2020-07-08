@@ -17,13 +17,15 @@ export default class App extends React.Component{
     super(props)
     this.state={
       movie:"nada",
-      user:null
+      user:null,
+      historyProfileMovie:[]
     }
   } 
   setMovie=(movi)=> {this.setState({movie:movi})}
   setUser=(usuario)=>{this.setState({user:usuario})}
   getMovie=()=>this.state.movie;
-
+  setHistoryProfileMovie=(history)=>{this.sertState({historyProfileMovie:history})}
+  getHistoryProfileMovie=()=>this.state.historyProfileMovie
 
 render(){
   return (  
@@ -37,7 +39,7 @@ render(){
           <Route exact path="/addMovies" render={AddMovie}></Route>
           <Route exact path="/updateMovies" render={UpdateMovie}></Route>
           <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
-          <Route exact path="/profile" render={props=><Profile user={this.state.user}/>}></Route>
+          <Route exact path="/profile" render={props=><Profile setHistoryProfileMovie={this.setHistoryProfileMovie} user={this.state.user}/>}></Route>
           <Route exact path="/deleteMovies" render={DeleteMovie}></Route>
           <Route exact path="/favorites" render={props=><Favorites setMovie={this.setMovie} user={this.state.user} setUser={this.setUser}/>}></Route>
       </Switch>

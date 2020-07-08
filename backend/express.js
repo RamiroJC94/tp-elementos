@@ -54,7 +54,8 @@ app.post('/addFav', async (req,res)=>{
 })
 
 app.post('/users/login',async (req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
+
     monguito.openConnection();
     try{
         let user = await service.login(req.body.username,req.body.password);
@@ -68,6 +69,25 @@ app.post('/users/login',async (req,res)=>{
     } 
 
 });
+
+app.post('/user/AddHistory', async (req, res) => {
+    console.log(req.body)
+    monguito.openConnection();
+    await service.ChangeHistoryMovie(req.body.username, req.body.titulo, req.body.imagen, req.body.trailer);
+    monguito.closeConnection();
+    console.log('ChangeHistory express success')
+    res.send('ChangeHistory express success');
+})
+
+app.get('/user/getHistory',async (req,res)=>{
+    monguito.openConnection()
+    // const history=await service.getHistoryMovie(req.body.username);
+    const history= await service.getHistoryMovie(req.query.username);
+    monguito.closeConnection()
+    res.send(history);
+    console.log('GetHistory express success')
+    // res.send(req.body)
+})
 
 app.post('/user',async  (req, res) => {
     console.log(req.body);

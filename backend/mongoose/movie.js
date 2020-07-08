@@ -9,7 +9,7 @@ let MovieSchema = new mongoose.Schema({
                    titulo:{type:String},
                    imagen:{type:String},
                    trailer:{type:String},
-                   comentarios:{type:[CommentSchema]},
+                   comentarios:{type:[CommentSchema]}
                   });
 
 export let Movie=mongoose.model('Movie',MovieSchema);   

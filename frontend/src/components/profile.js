@@ -3,7 +3,8 @@ import {withRouter}from 'react-router-dom';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import api from '../api/api';
+import api from '../api/api'
+import Movie from './movie.js'
 
 class Profile extends React.Component{
     constructor(props){
@@ -13,14 +14,30 @@ class Profile extends React.Component{
             username: "",
             email:"",
             password:"",
-            isAdmin: ""    //  EDITAR -- ACA DEBERIA APARECER LOS VALORES DEL PERFIL ACTUAL
+            isAdmin: "",
+            FormProfileIsVisible: "visible",
+            historialIsVisible:"hidden",
+            historyProfileMovies:[],
+            searchHistoryProfM:[],
+            setHPM:props.setHistoryProfileMovie,
+            userLogeado:props.userLogeado
         }
     }
 
     componentDidMount(){
-        //GET PROFILE STATE FROM API Log
-        console.log("")
-      }
+        if (this.state.userLogeado == null){
+            console.log('User No Login')
+        }else{
+            console.log(this.state.userLogeado.username)
+            if(this.state.searchHistoryProfM.length===0){
+                api.getHistoryMovie(this.state.userLogeado.username)
+                .then(data => {this.setState({historyProfileMovies:data})})
+                .catch(error => console.log(error))
+            }
+        }
+    }
+
+    SearchHistoryMovie=(pelis)=>this.setState({searchHistoryProfM:pelis})
 
     handleUser = (event) =>{
         this.setState({username:event.target.value.trim()})
@@ -34,12 +51,22 @@ class Profile extends React.Component{
     handleCheckBox = (event) =>{
         this.setState({isAdmin:event.target.value.trim()})
     }
-    
+
+    handlerChangeStatusVisibleFormProfile = () => {
+        const f = this.state.FormProfileisVisible
+        this.setState({FormProfileisVisible:(f==='visible' ? 'hidden': 'visible')})
+    }
+
+    handlerChangeStatusVisibleHistorial = () => {
+        const f = this.state.historialIsVisible
+        this.setState({historialIsVisible:(f==='visible' ? 'hidden': 'visible')})
+    }
+
     ChangePasswordUser=()=>{
         const body={username:this.state.username,password:this.state.password}
         api.changePasswordUser(body)
        .then(data=>{this.props.history.push("/")})
-       .catch(error=>console.log(error))
+       .catch(error=>this.setState({checkEnvio:this.errorLog("error in ChangePasswordUser")}))
     }
 
     ChangeData=()=>{
@@ -49,28 +76,28 @@ class Profile extends React.Component{
             .then(data=>{this.props.history.push("/")})
             .catch(error=>console.log(error))
     }
-    
+
     render(){
+        const data=this.state.historyProfileMovies
+        const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setHistory={this.state.setHPM}/>);
         return(
+
             <div>
                 <h1 className="titul">Panel Profile - MovieMoon</h1>
-            <div className="centrarForm" style={{display: "flex", flexDirection:"row"}}>
-{/*                <div style={{width:"15vw", paddingRight:"1vw", alignContent:"center",alignItems:"center", display:"flex", flexDirection:"column", justifyContent:"center"}}>
+                <div className="centrarForm" style={{display: "flex", flexDirection:"row", justifyContent:"center",width:"100vw",height:"175px",position:"static"}}>
+                    <div style={{width:"12vw",paddingRight:"1vw", paddingTop:"2vw", alignContent:"center",alignItems:"center", display:"flex", flexDirection:"column", justifyContent:"start"}}>
                     <Form>
-                        <Form.Group controlId="formBasicEmail">
-                            <Button  variant="primary">Edit Profile</Button>
+                        <Form.Group controlId="formEditProfile">
+                            <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleFormProfile} variant="primary">Edit Profile</Button>
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicEmail">
-                            <Button  variant="primary">Edit Favorites</Button>
-                        </Form.Group>
 
-                        <Form.Group controlId="formBasicEmail">
-                            <Button  variant="primary">Edit Historial</Button>
+                        <Form.Group controlId="formEditHistorial">
+                            <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleHistorial} variant="primary">View Historial</Button>
                         </Form.Group>
                     </Form>
-                </div>*/}
-                <div className="FormEditProfile" style={{flexDirection:"column", width:"50vw"}}>
+                </div>
+                <div className="FormEditProfile" id="FormEditProfile" style={{flexDirection:"column", width:"18vw",height:"288px",marginTop:"2vw",paddingTop:"1vw",paddingRight:"1vw",paddingLeft:"1vw",borderStyle:"solid", visibility:this.state.FormProfileisVisible}}>
                     <Form>
                         <Form.Group>
                             <Form.Label>User</Form.Label>
@@ -82,15 +109,23 @@ class Profile extends React.Component{
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Enter your password" value={this.state.password} onChange={this.handlePassword}/>
 
-{/*                            <Form.Label>isAdm?</Form.Label>
-                            <Form.Check type="checkbox" placeholder="Enter your password" value={this.state.isAdmin} onChange={this.handleCheckBox}/>*/}
+                            <Form.Label>isAdm?</Form.Label>
+                            <Form.Check type="checkbox" placeholder="Enter your password" value={this.state.isAdmin} onChange={this.handleCheckBox}/>
                         </Form.Group>
                     </Form>
-                    {/* onClick={this.signIn} */}
                     <div style={{display:"flex",flexDirection:"row",justifyContent:"space-around", alignItems:"center"}}>
                         {/*<Button  variant="primary" onClick={this.ChangePasswordUser}>ChangePasswordUser</Button>*/}
                         <Button  variant="primary" onClick={this.ChangeData}>Actualizar Datos</Button>
                         <Button  variant="primary" onClick={()=>this.props.history.push("/")}>Home</Button>
+                    </div>
+                </div>
+
+                <div id="History" style={{flexDirection:"column", width:"52vw",height:"100vh",padding:"1vw",margin:"1vw", visibility:this.state.historialIsVisible}}>
+                    <div>
+                        {/* <NavBarHome search={this.SearchHistoryMovie}></NavBarHome> */}
+                        <div className="elementos2">
+                            {this.state.searchHistoryProfM.length===0 ? pelis : this.state.searchHistoryProfM}
+                        </div>
                     </div>
                 </div>
             </div>

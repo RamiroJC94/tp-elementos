@@ -1,4 +1,4 @@
-import {User } from '../mongoose/user'
+import {User,History} from '../mongoose/user'
 
 export default class ServiceUser{
     constructor(){
@@ -38,6 +38,29 @@ export default class ServiceUser{
         User.update({username:userLogeado},{password:password,username:username,mail:email},function(err){
             if(err) return console.error(err);
         })
+    }
+
+    async ChangeHistoryMovie(username, titulo, imagen, trailer){
+        const movie = new History({
+            titulo:titulo,
+            imagen:imagen,
+            trailer:trailer
+        })
+        User.findOneAndUpdate({username:username},{$push:{history:movie}},function(err){
+            if(err) return console.error(err);
+        })
+        return "ChangeHistoryMovie service succes"
+    }
+
+    async getHistoryMovie(username){
+        console.log('username :: '+username)
+        const userFinded = await User.findOne({username:username});
+        console.log('SearchUser :: '+userFinded)
+        let result= userFinded.history
+        let history=result.map(movie => {
+            return{titulo:movie.titulo,imagen:movie.imagen,trailer:movie.trailer}
+        })
+        return history;
     }
 
     async login(username,password){

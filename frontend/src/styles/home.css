@@ -5,6 +5,13 @@
     margin: 10px;
 }
 
+.elementos2 {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-gap: 30px;
+    margin: 10px;
+}
+
 strong {
   font-family:Comic, cursive, sans-serif;
   padding: 10px;

@@ -29,7 +29,7 @@ class Home extends React.Component{
   setHome=(str)=>{this.setState({home:str})}
    render(){
        let data=this.state.movies;
-       let pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set}/>);
+       let pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setPeli={this.state.set} user={this.state.user}/>);
        return (
          <div >
            <NavBarHome search={this.resultSearch} userL={this.state.user} setU={this.state.setUser}setHome={this.setHome}></NavBarHome>
