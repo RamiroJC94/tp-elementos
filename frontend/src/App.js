@@ -10,6 +10,7 @@ import Profile from "./components/profile";
 import UpdateMovie from "./components/updateMovie";
 import PanelAdmin from "./components/panelAdmin";
 import DeleteMovie from "./components/deleteMovie";
+import Favorites from "./components/favorites"
 
 export default class App extends React.Component{
   constructor(props){
@@ -38,6 +39,7 @@ render(){
           <Route exact path="/panelAdmin" render={PanelAdmin}></Route>
           <Route exact path="/profile" render={props=><Profile user={this.state.user}/>}></Route>
           <Route exact path="/deleteMovies" render={DeleteMovie}></Route>
+          <Route exact path="/favorites" render={props=><Favorites setMovie={this.setMovie} user={this.state.user} setUser={this.setUser}/>}></Route>
       </Switch>
        </BrowserRouter>
        );
