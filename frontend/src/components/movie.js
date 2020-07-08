@@ -37,6 +37,6 @@ export default class Movie extends React.Component{
     render(){
         const dir="/player/"+this.state.peli.titulo
         // console.log('URL :: '+dir)
-        return (<Link to={dir} onClick={this.handlerHistoryMovie}><img className="movie"  src={this.state.peli.imagen}></img></Link>);
+        return (<Link to={dir} onClick={this.handlerHistoryMovie}><img className="movie2"  src={this.state.peli.imagen}></img></Link>);
     }
 }

@@ -59,17 +59,12 @@ app.post('/user/AddHistory', async (req, res) => {
 })
 
 app.get('/user/getHistory',async (req,res)=>{
-    console.log('************************************')
-    console.log('req : '+req)
-    console.log('req.body : '+req.body)
-    console.log('req.body.username : '+req.body.username)
-    console.log('************************************')
-
     monguito.openConnection()
-    const history=await service.getHistoryMovie(req.body.username);
+    // const history=await service.getHistoryMovie(req.body.username);
+    const history= await service.getHistoryMovie(req.query.username);
     monguito.closeConnection()
-    // res.send(history);
-    // console.log('GetHistory express success')
+    res.send(history);
+    console.log('GetHistory express success')
     // res.send(req.body)
 })
 

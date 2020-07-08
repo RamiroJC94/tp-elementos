@@ -55,7 +55,7 @@ await serviceUser.createUser("ash@gmail.com","admin","123",true);
 await serviceUser.createUser("a@gmail.com","user","123",false);
 
 await serviceUser.ChangeHistoryMovie('admin', 'Avengers: Age of Ultron', 'https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/5/54/Avengers_Age_Of_Ultron_Poster.png/revision/latest/scale-to-width-down/1000?cb=20191029195118&path-prefix=es', 'https://www.youtube.com/watch?v=tmeOjFno6Do');
-// console.log(await serviceUser.getHistoryMovie('admin'))
+//console.log(await serviceUser.getHistoryMovie('admin'))
 })
     })
 

@@ -24,7 +24,9 @@ const api ={
     searchUser:(body)=>request('get','/user',body),
     changePasswordUser:(body)=> request('put','/updatePasswordUser',body),
     changeHistoryMovie:(body)=> request('post','/user/AddHistory', body),
-    getHistoryMovie:(body)=> request('get','/user/getHistory', body)
+    // getHistoryMovie:(body)=> request('get','/user/getHistory', body),
+    getHistoryMovie:(username)=> request('get','/user/getHistory/?username='+username)
+
   }
 
 export default api;

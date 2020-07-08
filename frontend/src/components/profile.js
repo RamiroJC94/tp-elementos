@@ -28,23 +28,10 @@ class Profile extends React.Component{
             console.log('User No Login')
         }else{
             console.log(this.state.userLogeado.username)
-            let body = {username:this.state.userLogeado.username}
             if(this.state.searchHistoryProfM.length===0){
-                console.log('************************************')
-                console.log('username : '+this.state.userLogeado.username)
-                console.log('body : '+body)
-                console.log('body.username : '+body.username)
-                console.log('************************************')
-                
-                api.getHistoryMovie(body)
+                api.getHistoryMovie(this.state.userLogeado.username)
                 .then(data => {this.setState({historyProfileMovies:data})})
-                .catch(error => console.log(error))
-
-                console.log('************************************')
-                console.log('username : '+this.state.userLogeado.username)
-                console.log('body : '+body)
-                console.log('body.username : '+body.username)
-                console.log('************************************')                
+                .catch(error => console.log(error))            
             }
         }
     }
@@ -85,8 +72,8 @@ class Profile extends React.Component{
         const data=this.state.historyProfileMovies
         const pelis= data.map((elem)=><Movie key={elem.titulo} movie={elem} setHistory={this.state.setHPM}/>);
         return(
-            <div className="centrarForm" style={{display: "flex", flexDirection:"row"}}>
-                <div style={{width:"15vw", paddingRight:"1vw", alignContent:"center",alignItems:"center", display:"flex", flexDirection:"column", justifyContent:"center"}}>
+            <div className="centrarForm" style={{display: "flex", flexDirection:"row", justifyContent:"center",width:"100vw",height:"175px",position:"static"}}>
+                <div style={{width:"12vw",paddingRight:"1vw", paddingTop:"2vw", alignContent:"center",alignItems:"center", display:"flex", flexDirection:"column", justifyContent:"start"}}>
                     <Form>
                         <Form.Group controlId="formEditProfile">
                             <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleFormProfile} variant="primary">Edit Profile</Button>
@@ -96,16 +83,13 @@ class Profile extends React.Component{
                             <Button  id="HiddenShow" variant="primary">Edit Favorites</Button>
                         </Form.Group>
 
-                        {/* onClick={this.handlerChangeStatusVisible(document.getElementById("FormEditProfile"))  */}
-
                         <Form.Group controlId="formEditHistorial">
                             <Button  id="HiddenShow" onClick={this.handlerChangeStatusVisibleHistorial} variant="primary">View Historial</Button>
                         </Form.Group>
-                        {/* onClick={this.handlerChangeStatusVisible(document.getElementById("FormEditProfile"))  */}
                     
                     </Form>
                 </div>
-                <div className="FormEditProfile" id="FormEditProfile" style={{flexDirection:"column", width:"50vw", visibility:this.state.FormProfileisVisible}}>
+                <div className="FormEditProfile" id="FormEditProfile" style={{flexDirection:"column", width:"18vw",height:"288px",marginTop:"2vw",paddingTop:"1vw",paddingRight:"1vw",paddingLeft:"1vw",borderStyle:"solid", visibility:this.state.FormProfileisVisible}}>
                     <Form>
                         <Form.Group>
                             <Form.Label>User</Form.Label>
@@ -128,10 +112,10 @@ class Profile extends React.Component{
                     </div>
                 </div>
 
-                <div id="History" style={{flexDirection:"column", width:"50vw", visibility:this.state.historialIsVisible}}>
+                <div id="History" style={{flexDirection:"column", width:"52vw",height:"100vh",padding:"1vw",margin:"1vw", visibility:this.state.historialIsVisible}}>
                     <div>
                         {/* <NavBarHome search={this.SearchHistoryMovie}></NavBarHome> */}
-                        <div className="elementos">
+                        <div className="elementos2">
                             {this.state.searchHistoryProfM.length===0 ? pelis : this.state.searchHistoryProfM}
                         </div>
                     </div>
