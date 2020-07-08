@@ -19,11 +19,26 @@ class Player extends React.Component {
       peli: props.getMovie,
       botonComentario: true,
       error:false,
+      errorFav:false,
       comentarios:[],
       input:"",
       setUser:props.setUser
     }
 
+  }
+
+  addToFav = () =>{
+    if(!this.state.userL){
+      this.setState({errorFav:true})
+    } else {
+      let body = {
+        title: this.state.peli.titulo,
+        username: this.state.userL.username
+      }
+      api.addToFav(body)
+         .then(data=>console.log("success"))
+         .catch(error=>console.log(error))
+    }
   }
 
   comentar=()=>{
@@ -81,6 +96,10 @@ class Player extends React.Component {
       <div >
         <div className="movie">
           <h1>{this.state.peli.titulo}</h1>
+          <Button variant="primary" onClick={this.addToFav}>Agregar a favoritos </Button>
+          {this.state.errorFav ?  <Alert variant="danger" onClose={()=>this.setState({error:false})} dismissible>
+                    el usuario no esta logeado 
+                  </Alert> : null}
         </div>
         <div className="centrarMovie">
           <div className="player-wrapper">
