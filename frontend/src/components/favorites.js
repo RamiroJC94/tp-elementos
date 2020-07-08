@@ -16,6 +16,12 @@ class Favorites extends React.Component{
 
         }
     }
+    componentDidMount(){
+      let body={username:this.state.user.username}
+      api.favorites(body)
+      .then(data => this.setState({movies:data}))
+      .catch(p=>console.log(p))
+    }
     resultSearch=(pelis)=>this.setState({pelisBuscadas:pelis})
 
     render(){
