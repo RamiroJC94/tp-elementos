@@ -21,6 +21,8 @@
 
 ###			mongod --version
 
+###			Create directory \data\db in disk C:
+
 ###			------------------------------		mongodb 	linux	apt 	------------------------------
 
 ###			-----------------------		Babel 	sublime	syntax	highlighthing	react code 	---------------------
@@ -48,7 +50,7 @@
 
 ### yarn start (en el backend) (levantar la api)
 
-### levantar mongo
+### levantar mongo	(execute mongod.exe in c:\Program Files\MongoDB\Server\4.2\bin)
 
 ###			------------------------------		mongod 	linux	levantar 	------------------------------
 
